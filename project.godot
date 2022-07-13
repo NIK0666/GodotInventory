@@ -1,0 +1,66 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+_global_script_classes=[{
+"base": "Item",
+"class": &"BaseConsumableItem",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/Items/BaseConsumableItem.gd"
+}, {
+"base": "Node",
+"class": &"EquipmentSlotInfo",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/Data/EquipmentSlotInfo.gd"
+}, {
+"base": "Node",
+"class": &"InventoryComponent",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/InventoryComponent.gd"
+}, {
+"base": "Object",
+"class": &"InventoryItemSlot",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/Data/InventoryItemSlot.gd"
+}, {
+"base": "Resource",
+"class": &"Item",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/Items/Item.gd"
+}, {
+"base": "Node",
+"class": &"ItemSlotInfo",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/Data/ItemSlotInfo.gd"
+}, {
+"base": "Item",
+"class": &"WeaponItem",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/Items/WeaponItem.gd"
+}]
+_global_script_class_icons={
+"BaseConsumableItem": "",
+"EquipmentSlotInfo": "",
+"InventoryComponent": "",
+"InventoryItemSlot": "",
+"Item": "",
+"ItemSlotInfo": "",
+"WeaponItem": ""
+}
+
+[application]
+
+config/name="GodotInventory"
+run/main_scene="res://Inventory/UI_Inventory.tscn"
+config/icon="res://icon.png"
+config/features=PackedStringArray("4.0", "Vulkan Clustered")
+
+[autoload]
+
+Enums="*res://Inventory/Scripts/Data/GlobalEnums.gd"

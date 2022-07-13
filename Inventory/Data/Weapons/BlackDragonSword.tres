@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://da8kbnn2jo0i7"]
+
+[ext_resource type="Script" path="res://Inventory/Scripts/Items/WeaponItem.gd" id="1_epkbd"]
+
+[resource]
+script = ExtResource( "1_epkbd" )
+ItemName = "Black Dragon Sword"
+Weight = 4.0
+DetailsTitle = "Black Dragon Sword"
+DetailsDescription = "In legend, this oddly-shaped straight sword is said to be forged from the black dragon's tail.As it is told, the black dragon lost its tail to a brave warrior in a magnificent battle, and the tail was later used to forge several legendary weapons"
+StaminaCost = null

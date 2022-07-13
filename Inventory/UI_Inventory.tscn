@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://ct3unkc61hh5s"]
+
+[ext_resource type="Script" path="res://Inventory/Scripts/InventoryComponent.gd" id="1_vc0bn"]
+
+[sub_resource type="GDScript" id="GDScript_r1ke1"]
+script/source = "extends Control
+@onready var inventory_component: InventoryComponent = get_node(\"Inventory\")
+
+
+func _ready():
+	inventory_component.connect(\"AddedItemEvent\", on_added_item)
+	inventory_component.connect(\"MoveItemToChest\", on_moved_item_to_chest)
+	inventory_component.connect(\"RemovedItemEvent\", on_removed_item)
+	inventory_component.connect(\"EquipItemChanged\", on_equip_item)
+	
+#	var items: Array[ItemSlotInfo] = [
+#		ItemSlotInfo.new(\"res://Inventory/Data/Consumables/Lifegem.tres\", 10),
+#		ItemSlotInfo.new(\"res://Inventory/Data/Consumables/HumanEffigy.tres\", 15)]
+#
+#	inventory_component.SetItems(items, true)
+#	inventory_component.RemoveItem(\"res://Inventory/Data/Consumables/HumanEffigy.tres\", 2)
+	
+	var weapon1: InventoryItemSlot = inventory_component.AddItem(\"res://Inventory/Data/Weapons/LongSword.tres\", 1)
+	var weapon2: InventoryItemSlot = inventory_component.AddItem(\"res://Inventory/Data/Weapons/BlackDragonSword.tres\", 1)
+	inventory_component.SetEquipItemToSlot(weapon1, Enums.EEquipmentSlot.RHand3)
+	inventory_component.SetEquipItemToSlot(weapon2, Enums.EEquipmentSlot.RHand3)
+
+func on_added_item(res_path: String, item: Item, count: int, total_count: int):
+	print(\"on_added_item: \", item.ItemName, \" COUNT: \", count)
+
+func on_moved_item_to_chest(res_path: String, item: Item, count: int):
+	print(\"on_moved_item_to_chest: \", item.ItemName, \" COUNT: \", count)
+	
+func on_removed_item(res_path: String, item: Item, removed_count: int, total_count: int):
+	print(\"on_removed_item: \", item.ItemName, \" COUNT: \", removed_count, \" TOTAL: \", total_count)
+
+func on_equip_item(slot_type: Enums.EEquipmentSlot, from_item_slot: InventoryItemSlot, to_item_slot: InventoryItemSlot):
+	print(\"on_equip_item: \", slot_type, \" FROM: \", from_item_slot, \" TO: \", to_item_slot)
+"
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( "GDScript_r1ke1" )
+
+[node name="Inventory" type="Node" parent="."]
+script = ExtResource( "1_vc0bn" )
