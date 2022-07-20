@@ -41,7 +41,7 @@ func on_equip_item(slot_type: Enums.EEquipmentSlot, from_item_slot: InventoryIte
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = SubResource( "GDScript_r1ke1" )
+script = SubResource("GDScript_r1ke1")
 
 [node name="Inventory" type="Node" parent="."]
-script = ExtResource( "1_vc0bn" )
+script = ExtResource("1_vc0bn")
