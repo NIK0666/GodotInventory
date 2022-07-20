@@ -5,3 +5,7 @@ export_presets.cfg
 
 # Imported translations (automatically generated from CSV files)
 *.translation
+
+*.cache
+*.md5
+*.ctex
