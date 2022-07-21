@@ -64,3 +64,16 @@ config/icon="res://icon.png"
 [autoload]
 
 Enums="*res://Inventory/Scripts/Data/GlobalEnums.gd"
+
+[display]
+
+window/size/viewport_width=3840
+window/size/viewport_height=2160
+window/size/window_width_override=1280
+window/size/window_height_override=720
+window/stretch/mode="viewport"
+window/stretch/aspect="expand"
+
+[rendering]
+
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
