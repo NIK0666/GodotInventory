@@ -1,3 +1,4 @@
+Panel
 Label
 TextureRect
 HBoxContainer
@@ -6,7 +7,6 @@ VBoxContainer
 MarginContainer
 PanelContainer
 NinePatchRect
-Panel
 GridContainer
 Button
 TextureProgressBar

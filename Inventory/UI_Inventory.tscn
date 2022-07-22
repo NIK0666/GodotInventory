@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://c7icmea5jutk4"]
+[gd_scene load_steps=29 format=3 uid="uid://c7icmea5jutk4"]
 
 [ext_resource type="Theme" uid="uid://cbtmj1vevwjv6" path="res://Inventory/Assets/InventoryTheme.tres" id="1_keqng"]
 [ext_resource type="Script" path="res://Inventory/Scripts/InventoryComponent.gd" id="1_vc0bn"]
@@ -56,6 +56,10 @@ func on_equip_item(slot_type: Enums.EEquipmentSlot, from_item_slot: InventoryIte
 	print(\"on_equip_item: \", slot_type, \" FROM: \", from_item_slot, \" TO: \", to_item_slot)
 "
 
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wgnmj"]
+texture = ExtResource("5_djh5v")
+region_rect = Rect2(0, 0, 1194, 177)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_udjxh"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_flmrl"]
@@ -101,7 +105,7 @@ theme_override_constants/outline_size = 2
 theme_override_font_sizes/font_size = 96
 text = "INVENTORY"
 
-[node name="Expirience" type="HBoxContainer" parent="."]
+[node name="ExpirienceHBox" type="HBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -657.0
@@ -109,7 +113,7 @@ offset_top = 64.0
 offset_right = -128.0
 offset_bottom = 163.0
 
-[node name="LevelCaptionLabel" type="Label" parent="Expirience"]
+[node name="LevelCaptionLabel" type="Label" parent="ExpirienceHBox"]
 modulate = Color(1, 1, 1, 0.498039)
 offset_top = 11.0
 offset_right = 159.0
@@ -117,7 +121,7 @@ offset_bottom = 87.0
 theme_override_font_sizes/font_size = 54
 text = "LEVEL"
 
-[node name="MarginContainer" type="MarginContainer" parent="Expirience"]
+[node name="LevelValueMargin" type="MarginContainer" parent="ExpirienceHBox"]
 offset_left = 163.0
 offset_right = 269.0
 offset_bottom = 99.0
@@ -126,7 +130,7 @@ theme_override_constants/margin_top = -8
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 8
 
-[node name="LevelValueLabel" type="Label" parent="Expirience/MarginContainer"]
+[node name="LevelValueLabel" type="Label" parent="ExpirienceHBox/LevelValueMargin"]
 offset_left = 15.0
 offset_top = -8.0
 offset_right = 91.0
@@ -134,7 +138,7 @@ offset_bottom = 91.0
 theme_override_font_sizes/font_size = 72
 text = "11"
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="Expirience"]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="ExpirienceHBox"]
 offset_left = 273.0
 offset_top = 29.0
 offset_right = 529.0
@@ -145,14 +149,14 @@ texture_under = ExtResource("3_v8qxy")
 texture_progress = ExtResource("4_qd4np")
 texture_progress_offset = Vector2(2, 2)
 
-[node name="TypesPanel" type="TextureRect" parent="."]
+[node name="TypesPanel" type="Panel" parent="."]
 offset_left = 74.0
 offset_top = 196.0
 offset_right = 1268.0
 offset_bottom = 373.0
-texture = ExtResource("5_djh5v")
+theme_override_styles/panel = SubResource("StyleBoxTexture_wgnmj")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TypesPanel"]
+[node name="TypesHBox" type="HBoxContainer" parent="TypesPanel"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -161,7 +165,7 @@ offset_bottom = 77.0
 theme_override_constants/separation = 0
 alignment = 1
 
-[node name="WeaponButton" type="Button" parent="TypesPanel/HBoxContainer"]
+[node name="WeaponButton" type="Button" parent="TypesPanel/TypesHBox"]
 custom_minimum_size = Vector2(161, 154)
 offset_left = 194.0
 offset_right = 355.0
@@ -180,7 +184,7 @@ button_group = SubResource("ButtonGroup_6pcsf")
 icon = ExtResource("7_fpbj7")
 icon_alignment = 1
 
-[node name="ArmorButton" type="Button" parent="TypesPanel/HBoxContainer"]
+[node name="ArmorButton" type="Button" parent="TypesPanel/TypesHBox"]
 custom_minimum_size = Vector2(161, 154)
 offset_left = 355.0
 offset_right = 516.0
@@ -198,7 +202,7 @@ button_group = SubResource("ButtonGroup_6pcsf")
 icon = ExtResource("8_wxyra")
 icon_alignment = 1
 
-[node name="PotionButton" type="Button" parent="TypesPanel/HBoxContainer"]
+[node name="PotionButton" type="Button" parent="TypesPanel/TypesHBox"]
 custom_minimum_size = Vector2(161, 154)
 offset_left = 516.0
 offset_right = 677.0
@@ -216,7 +220,7 @@ button_group = SubResource("ButtonGroup_6pcsf")
 icon = ExtResource("9_mbe44")
 icon_alignment = 1
 
-[node name="AmuletButton" type="Button" parent="TypesPanel/HBoxContainer"]
+[node name="AmuletButton" type="Button" parent="TypesPanel/TypesHBox"]
 custom_minimum_size = Vector2(161, 154)
 offset_left = 677.0
 offset_right = 838.0
@@ -234,7 +238,7 @@ button_group = SubResource("ButtonGroup_6pcsf")
 icon = ExtResource("10_bg8sh")
 icon_alignment = 1
 
-[node name="NoteButton" type="Button" parent="TypesPanel/HBoxContainer"]
+[node name="NoteButton" type="Button" parent="TypesPanel/TypesHBox"]
 custom_minimum_size = Vector2(161, 154)
 offset_left = 838.0
 offset_right = 999.0
@@ -252,7 +256,7 @@ button_group = SubResource("ButtonGroup_6pcsf")
 icon = ExtResource("11_7vpm1")
 icon_alignment = 1
 
-[node name="InventoryGridContainer" type="GridContainer" parent="."]
+[node name="InventoryGrid" type="GridContainer" parent="."]
 custom_minimum_size = Vector2(1072, 1616)
 offset_left = 128.0
 offset_top = 380.0
@@ -262,125 +266,125 @@ theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
 columns = 4
 
-[node name="Slot" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 
-[node name="Slot2" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot2" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 272.0
 offset_right = 528.0
 
-[node name="Slot3" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot3" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 544.0
 offset_right = 800.0
 
-[node name="Slot4" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot4" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 816.0
 offset_right = 1072.0
 
-[node name="Slot5" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot5" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_top = 272.0
 offset_bottom = 528.0
 
-[node name="Slot6" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot6" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 272.0
 offset_top = 272.0
 offset_right = 528.0
 offset_bottom = 528.0
 
-[node name="Slot7" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot7" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 544.0
 offset_top = 272.0
 offset_right = 800.0
 offset_bottom = 528.0
 
-[node name="Slot8" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot8" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 816.0
 offset_top = 272.0
 offset_right = 1072.0
 offset_bottom = 528.0
 
-[node name="Slot9" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot9" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_top = 544.0
 offset_bottom = 800.0
 
-[node name="Slot10" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot10" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 272.0
 offset_top = 544.0
 offset_right = 528.0
 offset_bottom = 800.0
 
-[node name="Slot11" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot11" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 544.0
 offset_top = 544.0
 offset_right = 800.0
 offset_bottom = 800.0
 
-[node name="Slot12" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot12" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 816.0
 offset_top = 544.0
 offset_right = 1072.0
 offset_bottom = 800.0
 
-[node name="Slot13" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot13" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_top = 816.0
 offset_bottom = 1072.0
 
-[node name="Slot14" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot14" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 272.0
 offset_top = 816.0
 offset_right = 528.0
 offset_bottom = 1072.0
 
-[node name="Slot15" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot15" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 544.0
 offset_top = 816.0
 offset_right = 800.0
 offset_bottom = 1072.0
 
-[node name="Slot16" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot16" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 816.0
 offset_top = 816.0
 offset_right = 1072.0
 offset_bottom = 1072.0
 
-[node name="Slot17" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot17" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_top = 1088.0
 offset_bottom = 1344.0
 
-[node name="Slot18" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot18" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 272.0
 offset_top = 1088.0
 offset_right = 528.0
 offset_bottom = 1344.0
 
-[node name="Slot19" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot19" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 544.0
 offset_top = 1088.0
 offset_right = 800.0
 offset_bottom = 1344.0
 
-[node name="Slot20" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot20" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 816.0
 offset_top = 1088.0
 offset_right = 1072.0
 offset_bottom = 1344.0
 
-[node name="Slot21" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot21" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_top = 1360.0
 offset_bottom = 1616.0
 
-[node name="Slot22" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot22" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 272.0
 offset_top = 1360.0
 offset_right = 528.0
 offset_bottom = 1616.0
 
-[node name="Slot23" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot23" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 544.0
 offset_top = 1360.0
 offset_right = 800.0
 offset_bottom = 1616.0
 
-[node name="Slot24" parent="InventoryGridContainer" instance=ExtResource("12_qqhls")]
+[node name="Slot24" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 816.0
 offset_top = 1360.0
 offset_right = 1072.0
@@ -395,89 +399,89 @@ offset_top = 380.0
 offset_right = -128.0
 offset_bottom = 1996.0
 
-[node name="EquipSlot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+[node name="RHand1_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 
-[node name="EquipSlot4" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+[node name="RHand2_Slot" parent="EquipmentControl" instance=ExtResource("14_5ke3s")]
+offset_left = 240.0
+offset_top = 28.0
+offset_right = 436.0
+offset_bottom = 224.0
+
+[node name="RHand3_Slot" parent="EquipmentControl" instance=ExtResource("14_5ke3s")]
+offset_left = 452.0
+offset_top = 28.0
+offset_right = 648.0
+offset_bottom = 224.0
+
+[node name="LHand1_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_top = 240.0
 offset_bottom = 464.0
 
-[node name="EquipSlot7" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+[node name="LHand2_Slot" parent="EquipmentControl" instance=ExtResource("14_5ke3s")]
+offset_left = 240.0
+offset_top = 268.0
+offset_right = 436.0
+offset_bottom = 464.0
+
+[node name="LHand3_Slot" parent="EquipmentControl" instance=ExtResource("14_5ke3s")]
+offset_left = 452.0
+offset_top = 268.0
+offset_right = 648.0
+offset_bottom = 464.0
+
+[node name="Helm_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_top = 544.0
 offset_bottom = 768.0
 
-[node name="EquipSlot8" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+[node name="Armor_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 240.0
 offset_top = 544.0
 offset_right = 464.0
 offset_bottom = 768.0
 
-[node name="EquipSlot9" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+[node name="Boots_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 480.0
 offset_top = 544.0
 offset_right = 704.0
 offset_bottom = 768.0
 
-[node name="EquipSlot10" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+[node name="Amulet_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_top = 848.0
 offset_bottom = 1072.0
 
-[node name="EquipSlot13" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+[node name="Consumable1_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_top = 1152.0
 offset_bottom = 1376.0
 
-[node name="EquipSlot14" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+[node name="Consumable2_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 240.0
 offset_top = 1152.0
 offset_right = 464.0
 offset_bottom = 1376.0
 
-[node name="EquipSlot15" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+[node name="Consumable3_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 480.0
 offset_top = 1152.0
 offset_right = 704.0
 offset_bottom = 1376.0
 
-[node name="EquipSlot16" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+[node name="Consumable4_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_top = 1392.0
 offset_bottom = 1616.0
 
-[node name="EquipSlot17" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+[node name="Consumable5_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 240.0
 offset_top = 1392.0
 offset_right = 464.0
 offset_bottom = 1616.0
 
-[node name="EquipSlot18" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+[node name="Consumable6_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 480.0
 offset_top = 1392.0
 offset_right = 704.0
 offset_bottom = 1616.0
 
-[node name="SmallEquipSlot" parent="EquipmentControl" instance=ExtResource("14_5ke3s")]
-offset_left = 240.0
-offset_top = 28.0
-offset_right = 436.0
-offset_bottom = 224.0
-
-[node name="SmallEquipSlot2" parent="EquipmentControl" instance=ExtResource("14_5ke3s")]
-offset_left = 452.0
-offset_top = 28.0
-offset_right = 648.0
-offset_bottom = 224.0
-
-[node name="SmallEquipSlot3" parent="EquipmentControl" instance=ExtResource("14_5ke3s")]
-offset_left = 240.0
-offset_top = 268.0
-offset_right = 436.0
-offset_bottom = 464.0
-
-[node name="SmallEquipSlot4" parent="EquipmentControl" instance=ExtResource("14_5ke3s")]
-offset_left = 452.0
-offset_top = 268.0
-offset_right = 648.0
-offset_bottom = 464.0
-
-[node name="Panel" type="PanelContainer" parent="."]
+[node name="ItemInfoPanel" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(757, 400)
 offset_left = 1214.0
 offset_top = 380.0
@@ -485,29 +489,29 @@ offset_right = 1971.0
 offset_bottom = 1463.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_5qufb")
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel"]
+[node name="ItemInfoVBox" type="VBoxContainer" parent="ItemInfoPanel"]
 offset_left = 47.0
 offset_top = 29.0
 offset_right = 710.0
 offset_bottom = 1092.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer2"]
+[node name="CommonVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox"]
 offset_right = 663.0
 offset_bottom = 317.0
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer2/VBoxContainer"]
+[node name="NameLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox"]
 offset_right = 663.0
 offset_bottom = 67.0
 theme_override_font_sizes/font_size = 48
 text = "Item name"
 
-[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer2/VBoxContainer"]
+[node name="ItemTypeMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox"]
 offset_top = 71.0
 offset_right = 663.0
 offset_bottom = 116.0
 theme_override_constants/margin_top = -12
 
-[node name="Label2" type="Label" parent="Panel/VBoxContainer2/VBoxContainer/MarginContainer2"]
+[node name="ItemTypeLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/ItemTypeMargin"]
 offset_top = -12.0
 offset_right = 663.0
 offset_bottom = 45.0
@@ -516,25 +520,25 @@ theme_override_font_sizes/font_size = 40
 text = "Item type"
 uppercase = true
 
-[node name="VBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer2/VBoxContainer"]
+[node name="PropertiesHBox" type="HBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox"]
 offset_top = 120.0
 offset_right = 663.0
 offset_bottom = 262.0
 theme_override_constants/separation = 32
 
-[node name="HBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer2/VBoxContainer/VBoxContainer"]
+[node name="ValuesVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox"]
 offset_right = 84.0
 offset_bottom = 142.0
 theme_override_constants/separation = -16
 
-[node name="Label2" type="Label" parent="Panel/VBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox/ValuesVBox"]
 offset_right = 84.0
 offset_bottom = 79.0
 theme_override_font_sizes/font_size = 56
 text = "5-7"
 horizontal_alignment = 2
 
-[node name="Label4" type="Label" parent="Panel/VBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox/ValuesVBox"]
 offset_top = 63.0
 offset_right = 84.0
 offset_bottom = 142.0
@@ -542,26 +546,26 @@ theme_override_font_sizes/font_size = 56
 text = "5"
 horizontal_alignment = 2
 
-[node name="HBoxContainer2" type="VBoxContainer" parent="Panel/VBoxContainer2/VBoxContainer/VBoxContainer"]
+[node name="TextsVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox"]
 offset_left = 116.0
 offset_right = 527.0
 offset_bottom = 142.0
 theme_override_constants/separation = -16
 
-[node name="Label3" type="Label" parent="Panel/VBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox/TextsVBox"]
 offset_right = 411.0
 offset_bottom = 79.0
 theme_override_font_sizes/font_size = 56
 text = "Defence"
 
-[node name="Label4" type="Label" parent="Panel/VBoxContainer2/VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox/TextsVBox"]
 offset_top = 63.0
 offset_right = 411.0
 offset_bottom = 142.0
 theme_override_font_sizes/font_size = 56
 text = "Piercing damage"
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer2/VBoxContainer"]
+[node name="LineMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox"]
 offset_top = 266.0
 offset_right = 663.0
 offset_bottom = 317.0
@@ -570,7 +574,7 @@ theme_override_constants/margin_top = 17
 theme_override_constants/margin_right = -47
 theme_override_constants/margin_bottom = 25
 
-[node name="LineNinePatchRect" type="NinePatchRect" parent="Panel/VBoxContainer2/VBoxContainer/MarginContainer"]
+[node name="LineNinePatchRect" type="NinePatchRect" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/LineMargin"]
 custom_minimum_size = Vector2(240, 9)
 offset_left = -47.0
 offset_top = 17.0
@@ -580,29 +584,29 @@ texture = ExtResource("16_gqv8v")
 patch_margin_left = 120
 patch_margin_right = 120
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Panel/VBoxContainer2"]
+[node name="EffectsVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox"]
 offset_top = 321.0
 offset_right = 663.0
 offset_bottom = 709.0
 
-[node name="VBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer2/VBoxContainer2"]
+[node name="PropertiesHBox" type="HBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox"]
 offset_right = 663.0
 offset_bottom = 114.0
 theme_override_constants/separation = 32
 
-[node name="HBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer2/VBoxContainer2/VBoxContainer"]
+[node name="ValuesVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox"]
 offset_right = 59.0
 offset_bottom = 114.0
 theme_override_constants/separation = 0
 
-[node name="Label2" type="Label" parent="Panel/VBoxContainer2/VBoxContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox/ValuesVBox"]
 offset_right = 59.0
 offset_bottom = 57.0
 theme_override_font_sizes/font_size = 40
 text = "5-7"
 horizontal_alignment = 2
 
-[node name="Label4" type="Label" parent="Panel/VBoxContainer2/VBoxContainer2/VBoxContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox/ValuesVBox"]
 offset_top = 57.0
 offset_right = 59.0
 offset_bottom = 114.0
@@ -610,32 +614,32 @@ theme_override_font_sizes/font_size = 40
 text = "5"
 horizontal_alignment = 2
 
-[node name="HBoxContainer2" type="VBoxContainer" parent="Panel/VBoxContainer2/VBoxContainer2/VBoxContainer"]
+[node name="TextsVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox"]
 offset_left = 91.0
 offset_right = 386.0
 offset_bottom = 114.0
 theme_override_constants/separation = 0
 
-[node name="Label3" type="Label" parent="Panel/VBoxContainer2/VBoxContainer2/VBoxContainer/HBoxContainer2"]
+[node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox/TextsVBox"]
 offset_right = 295.0
 offset_bottom = 57.0
 theme_override_font_sizes/font_size = 40
 text = "Defence"
 
-[node name="Label4" type="Label" parent="Panel/VBoxContainer2/VBoxContainer2/VBoxContainer/HBoxContainer2"]
+[node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox/TextsVBox"]
 offset_top = 57.0
 offset_right = 295.0
 offset_bottom = 114.0
 theme_override_font_sizes/font_size = 40
 text = "Piercing damage"
 
-[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer2/VBoxContainer2"]
+[node name="RequiredsCaptionMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox"]
 offset_top = 118.0
 offset_right = 663.0
 offset_bottom = 215.0
 theme_override_constants/margin_top = 40
 
-[node name="Label2" type="Label" parent="Panel/VBoxContainer2/VBoxContainer2/MarginContainer2"]
+[node name="RequiredsCaptionLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsCaptionMargin"]
 offset_top = 40.0
 offset_right = 663.0
 offset_bottom = 97.0
@@ -643,25 +647,25 @@ theme_override_colors/font_color = Color(1, 1, 1, 0.498039)
 theme_override_font_sizes/font_size = 40
 text = "Requireds:"
 
-[node name="VBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer2/VBoxContainer2"]
+[node name="RequiredsHBox" type="HBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox"]
 offset_top = 219.0
 offset_right = 663.0
 offset_bottom = 333.0
 theme_override_constants/separation = 32
 
-[node name="HBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer2/VBoxContainer2/VBoxContainer2"]
+[node name="ValuesVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox"]
 offset_right = 59.0
 offset_bottom = 114.0
 theme_override_constants/separation = 0
 
-[node name="Label2" type="Label" parent="Panel/VBoxContainer2/VBoxContainer2/VBoxContainer2/HBoxContainer"]
+[node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox/ValuesVBox"]
 offset_right = 59.0
 offset_bottom = 57.0
 theme_override_font_sizes/font_size = 40
 text = "5-7"
 horizontal_alignment = 2
 
-[node name="Label4" type="Label" parent="Panel/VBoxContainer2/VBoxContainer2/VBoxContainer2/HBoxContainer"]
+[node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox/ValuesVBox"]
 offset_top = 57.0
 offset_right = 59.0
 offset_bottom = 114.0
@@ -669,26 +673,26 @@ theme_override_font_sizes/font_size = 40
 text = "5"
 horizontal_alignment = 2
 
-[node name="HBoxContainer2" type="VBoxContainer" parent="Panel/VBoxContainer2/VBoxContainer2/VBoxContainer2"]
+[node name="TextsVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox"]
 offset_left = 91.0
 offset_right = 386.0
 offset_bottom = 114.0
 theme_override_constants/separation = 0
 
-[node name="Label3" type="Label" parent="Panel/VBoxContainer2/VBoxContainer2/VBoxContainer2/HBoxContainer2"]
+[node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox/TextsVBox"]
 offset_right = 295.0
 offset_bottom = 57.0
 theme_override_font_sizes/font_size = 40
 text = "Defence"
 
-[node name="Label4" type="Label" parent="Panel/VBoxContainer2/VBoxContainer2/VBoxContainer2/HBoxContainer2"]
+[node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox/TextsVBox"]
 offset_top = 57.0
 offset_right = 295.0
 offset_bottom = 114.0
 theme_override_font_sizes/font_size = 40
 text = "Piercing damage"
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer2/VBoxContainer2"]
+[node name="LineMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox"]
 offset_top = 337.0
 offset_right = 663.0
 offset_bottom = 388.0
@@ -697,7 +701,7 @@ theme_override_constants/margin_top = 17
 theme_override_constants/margin_right = -47
 theme_override_constants/margin_bottom = 25
 
-[node name="LineNinePatchRect" type="NinePatchRect" parent="Panel/VBoxContainer2/VBoxContainer2/MarginContainer"]
+[node name="LineNinePatchRect" type="NinePatchRect" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/LineMargin"]
 custom_minimum_size = Vector2(240, 9)
 offset_left = -47.0
 offset_top = 17.0
@@ -707,17 +711,17 @@ texture = ExtResource("16_gqv8v")
 patch_margin_left = 120
 patch_margin_right = 120
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="Panel/VBoxContainer2"]
+[node name="DescriptionVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox"]
 offset_top = 713.0
 offset_right = 663.0
 offset_bottom = 995.0
 
-[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer2/VBoxContainer3"]
+[node name="DescriptionMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/DescriptionVBox"]
 offset_right = 663.0
 offset_bottom = 222.0
 theme_override_constants/margin_top = 14
 
-[node name="Label2" type="Label" parent="Panel/VBoxContainer2/VBoxContainer3/MarginContainer2"]
+[node name="DescriptionLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/DescriptionVBox/DescriptionMargin"]
 offset_top = 14.0
 offset_right = 663.0
 offset_bottom = 222.0
@@ -727,7 +731,7 @@ text = "It takes a lot of strength to hold it with one hand. These weapons were 
 It contains a piece of the creator's soul."
 autowrap_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer2/VBoxContainer3"]
+[node name="LineMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/DescriptionVBox"]
 offset_top = 226.0
 offset_right = 663.0
 offset_bottom = 282.0
@@ -736,7 +740,7 @@ theme_override_constants/margin_top = 47
 theme_override_constants/margin_right = -47
 theme_override_constants/margin_bottom = 0
 
-[node name="LineNinePatchRect" type="NinePatchRect" parent="Panel/VBoxContainer2/VBoxContainer3/MarginContainer"]
+[node name="LineNinePatchRect" type="NinePatchRect" parent="ItemInfoPanel/ItemInfoVBox/DescriptionVBox/LineMargin"]
 custom_minimum_size = Vector2(240, 9)
 offset_left = -47.0
 offset_top = 47.0
@@ -746,35 +750,35 @@ texture = ExtResource("16_gqv8v")
 patch_margin_left = 120
 patch_margin_right = 120
 
-[node name="VBoxContainer4" type="VBoxContainer" parent="Panel/VBoxContainer2"]
+[node name="FooterVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox"]
 offset_top = 999.0
 offset_right = 663.0
 offset_bottom = 1063.0
 
-[node name="Control" type="Control" parent="Panel/VBoxContainer2/VBoxContainer4"]
+[node name="Control" type="Control" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox"]
 custom_minimum_size = Vector2(0, 64)
 offset_right = 663.0
 offset_bottom = 64.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer2/VBoxContainer4/Control"]
+[node name="WeightHBox" type="HBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control"]
 offset_right = 40.0
 offset_bottom = 40.0
 theme_override_constants/separation = 12
 
-[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer2/VBoxContainer4/Control/HBoxContainer"]
+[node name="WeightTextureRect" type="TextureRect" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/WeightHBox"]
 offset_right = 50.0
 offset_bottom = 67.0
 texture = ExtResource("17_icgdy")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer2/VBoxContainer4/Control/HBoxContainer"]
+[node name="WeightLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/WeightHBox"]
 offset_left = 62.0
 offset_right = 127.0
 offset_bottom = 67.0
 theme_override_font_sizes/font_size = 48
 text = "1.5"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer2/VBoxContainer4/Control"]
+[node name="DurabilityHBox" type="HBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control"]
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -63.5
@@ -782,33 +786,33 @@ offset_right = 63.5
 offset_bottom = 67.0
 theme_override_constants/separation = 12
 
-[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer2/VBoxContainer4/Control/HBoxContainer2"]
+[node name="DurabilityTextureRect" type="TextureRect" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/DurabilityHBox"]
 offset_right = 42.0
 offset_bottom = 67.0
 texture = ExtResource("18_u4mpr")
 stretch_mode = 3
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer2/VBoxContainer4/Control/HBoxContainer2"]
+[node name="DurabilityLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/DurabilityHBox"]
 offset_left = 54.0
 offset_right = 119.0
 offset_bottom = 67.0
 theme_override_font_sizes/font_size = 48
 text = "1.5"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer2/VBoxContainer4/Control"]
+[node name="CostHBox" type="HBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control"]
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -127.0
 offset_bottom = 67.0
 theme_override_constants/separation = 12
 
-[node name="Label" type="Label" parent="Panel/VBoxContainer2/VBoxContainer4/Control/HBoxContainer3"]
+[node name="CostLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/CostHBox"]
 offset_right = 65.0
 offset_bottom = 67.0
 theme_override_font_sizes/font_size = 48
 text = "1.5"
 
-[node name="TextureRect" type="TextureRect" parent="Panel/VBoxContainer2/VBoxContainer4/Control/HBoxContainer3"]
+[node name="CostTextureRect" type="TextureRect" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/CostHBox"]
 offset_left = 77.0
 offset_right = 119.0
 offset_bottom = 67.0
