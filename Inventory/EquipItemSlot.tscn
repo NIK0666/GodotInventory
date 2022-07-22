@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://dt1m2f4ikd0dy"]
+
+[ext_resource type="PackedScene" uid="uid://c5xaeq38oorc2" path="res://Inventory/InventoryItemSlot.tscn" id="1_4ny41"]
+[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/ActiveCellBackground.tres" id="2_ft6h0"]
+[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/PlaceholderHelm.tres" id="3_p2n40"]
+
+[node name="Background" instance=ExtResource("1_4ny41")]
+custom_minimum_size = Vector2(224, 224)
+offset_right = 224.0
+offset_bottom = 224.0
+
+[node name="ActiveNinePathRect" type="NinePatchRect" parent="." index="0"]
+visible = false
+custom_minimum_size = Vector2(220, 220)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -110.0
+offset_right = 110.0
+offset_bottom = 110.0
+texture = ExtResource("2_ft6h0")
+patch_margin_left = 60
+patch_margin_top = 60
+patch_margin_right = 60
+patch_margin_bottom = 60
+
+[node name="PlaceholderTextureRect" type="TextureRect" parent="." index="1"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource("3_p2n40")
+stretch_mode = 3
+
+[node name="IsEquippedTextureRect" parent="Content" index="2"]
+visible = false
+
+[node name="SelectorTextureRect" parent="Content" index="3"]
+custom_minimum_size = Vector2(236, 236)
+offset_left = -118.0
+offset_top = -118.0
+offset_right = 118.0
+offset_bottom = 118.0
+ignore_texture_size = true

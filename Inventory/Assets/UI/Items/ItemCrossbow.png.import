@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bvlyte842ick0"
-path="res://.godot/imported/Inventory.png-d68ecdcb2d2fa63d28d338c46dc8aae0.ctex"
+uid="uid://iwdnf3k0p7qm"
+path="res://.godot/imported/ItemCrossbow.png-2203b026e811f11cf3945a300be1cea2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Inventory/Assets/UI/Inventory.png"
-dest_files=["res://.godot/imported/Inventory.png-d68ecdcb2d2fa63d28d338c46dc8aae0.ctex"]
+source_file="res://Inventory/Assets/UI/Items/ItemCrossbow.png"
+dest_files=["res://.godot/imported/ItemCrossbow.png-2203b026e811f11cf3945a300be1cea2.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/hdr_compression=1
 compress/bptc_ldr=0
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

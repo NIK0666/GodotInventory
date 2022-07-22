@@ -1,7 +1,11 @@
+res://Inventory
+res://Inventory/Assets/Materials
+res://Inventory/Assets/UI/Inventory.sprites
+res://Inventory/Scripts
+res://Inventory/Assets
+res://Inventory/Assets/Fonts
 res://Inventory/Data/Consumables
 res://Inventory/Data/Weapons
 res://Inventory/Data
 C:/Program Files/Blender Foundation/Blender 3.2
 P:/Programs
-res://Inventory/Scripts
-res://Inventory

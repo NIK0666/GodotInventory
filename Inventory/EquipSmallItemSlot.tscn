@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxh6l2bwvmjp0"]
+
+[ext_resource type="PackedScene" uid="uid://dt1m2f4ikd0dy" path="res://Inventory/EquipItemSlot.tscn" id="1_45q08"]
+
+[node name="Background" instance=ExtResource("1_45q08")]
+custom_minimum_size = Vector2(196, 196)
+offset_right = 196.0
+offset_bottom = 196.0
+
+[node name="ActiveNinePathRect" parent="." index="0"]
+custom_minimum_size = Vector2(192, 192)
+offset_left = -96.0
+offset_top = -96.0
+offset_right = 96.0
+offset_bottom = 96.0
+
+[node name="PlaceholderTextureRect" parent="." index="1"]
+custom_minimum_size = Vector2(190, 190)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -95.0
+offset_right = 95.0
+offset_bottom = 95.0
+ignore_texture_size = true
+
+[node name="ItemTextureRect" parent="Content" index="0"]
+custom_minimum_size = Vector2(190, 190)
+offset_left = -95.0
+offset_top = -95.0
+offset_right = 95.0
+offset_bottom = 95.0
+
+[node name="CountLabel" parent="Content" index="1"]
+offset_top = -58.0
+theme_override_font_sizes/font_size = 42
+
+[node name="SelectorTextureRect" parent="Content" index="3"]
+custom_minimum_size = Vector2(208, 208)
+offset_left = -104.0
+offset_top = -104.0
+offset_right = 104.0
+offset_bottom = 104.0
