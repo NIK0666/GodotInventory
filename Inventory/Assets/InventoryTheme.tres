@@ -1,7 +1,7 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://cbtmj1vevwjv6"]
 
-[ext_resource type="Font" uid="uid://drb0rnh6fo4x1" path="res://Inventory/Assets/Fonts/PT_Serif_Regular.tres" id="1_yc3at"]
+[ext_resource type="FontFile" uid="uid://deimid2yxe3lr" path="res://Inventory/Assets/Fonts/PT_Serif-Web-Regular.ttf" id="1_ydwf4"]
 
 [resource]
-default_font = ExtResource("1_yc3at")
+default_font = ExtResource("1_ydwf4")
 default_font_size = 48

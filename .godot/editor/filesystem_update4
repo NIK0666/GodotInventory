@@ -1,7 +1,8 @@
+res://Inventory/Scripts/Items/BaseConsumableItem.gd
 res://Inventory/Scripts/InventoryComponent.gd
 res://Inventory/Scripts/Data/InventoryItemSlot.gd
 res://Inventory/Scripts/Items/Item.gd
 res://Inventory/Scripts/Data/ItemSlotInfo.gd
 res://Inventory/UI_Inventory.tscn
-res://Inventory/Assets/Fonts/PT_Serif_Regular.tres
 res://Inventory/Assets/Materials/M_Selector.tres
+res://Inventory/Scripts/UI/InventoryUI.gd

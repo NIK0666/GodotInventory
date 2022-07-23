@@ -1,5 +1,7 @@
+ItemsData (ItemsData.gd)
+BaseConsumableItem (BaseConsumableItem.gd)
+FontFile
 Theme
 Font
-BaseConsumableItem (BaseConsumableItem.gd)
 WeaponItem (WeaponItem.gd)
 Item (Item.gd)

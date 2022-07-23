@@ -1,6 +1,6 @@
-[gd_scene load_steps=29 format=3 uid="uid://c7icmea5jutk4"]
+[gd_scene load_steps=28 format=3 uid="uid://docdvp3a132je"]
 
-[ext_resource type="Theme" uid="uid://cbtmj1vevwjv6" path="res://Inventory/Assets/InventoryTheme.tres" id="1_keqng"]
+[ext_resource type="Script" path="res://Inventory/Scripts/UI/InventoryUI.gd" id="1_gce7g"]
 [ext_resource type="Script" path="res://Inventory/Scripts/InventoryComponent.gd" id="1_vc0bn"]
 [ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/ProgressBG.tres" id="3_v8qxy"]
 [ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/ProgressFG.tres" id="4_qd4np"]
@@ -19,42 +19,6 @@
 [ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/WeightIcon.tres" id="17_icgdy"]
 [ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/HammerIcon.tres" id="18_u4mpr"]
 [ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/CoinIcon.tres" id="19_epyyp"]
-
-[sub_resource type="GDScript" id="GDScript_r1ke1"]
-script/source = "extends Control
-@onready var inventory_component: InventoryComponent = get_node(\"Inventory\")
-
-
-func _ready():
-	inventory_component.connect(\"AddedItemEvent\", on_added_item)
-	inventory_component.connect(\"MoveItemToChest\", on_moved_item_to_chest)
-	inventory_component.connect(\"RemovedItemEvent\", on_removed_item)
-	inventory_component.connect(\"EquipItemChanged\", on_equip_item)
-	
-#	var items: Array[ItemSlotInfo] = [
-#		ItemSlotInfo.new(\"res://Inventory/Data/Consumables/Lifegem.tres\", 10),
-#		ItemSlotInfo.new(\"res://Inventory/Data/Consumables/HumanEffigy.tres\", 15)]
-#
-#	inventory_component.SetItems(items, true)
-#	inventory_component.RemoveItem(\"res://Inventory/Data/Consumables/HumanEffigy.tres\", 2)
-	
-	var weapon1: InventoryItemSlot = inventory_component.AddItem(\"res://Inventory/Data/Weapons/LongSword.tres\", 1)
-	var weapon2: InventoryItemSlot = inventory_component.AddItem(\"res://Inventory/Data/Weapons/BlackDragonSword.tres\", 1)
-	inventory_component.SetEquipItemToSlot(weapon1, Enums.EEquipmentSlot.RHand3)
-	inventory_component.SetEquipItemToSlot(weapon2, Enums.EEquipmentSlot.RHand3)
-
-func on_added_item(res_path: String, item: Item, count: int, total_count: int):
-	print(\"on_added_item: \", item.ItemName, \" COUNT: \", count)
-
-func on_moved_item_to_chest(res_path: String, item: Item, count: int):
-	print(\"on_moved_item_to_chest: \", item.ItemName, \" COUNT: \", count)
-	
-func on_removed_item(res_path: String, item: Item, removed_count: int, total_count: int):
-	print(\"on_removed_item: \", item.ItemName, \" COUNT: \", removed_count, \" TOTAL: \", total_count)
-
-func on_equip_item(slot_type: Enums.EEquipmentSlot, from_item_slot: InventoryItemSlot, to_item_slot: InventoryItemSlot):
-	print(\"on_equip_item: \", slot_type, \" FROM: \", from_item_slot, \" TO: \", to_item_slot)
-"
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wgnmj"]
 texture = ExtResource("5_djh5v")
@@ -86,11 +50,10 @@ margin_right = 47.0
 margin_bottom = 29.0
 region_rect = Rect2(0, 0, 771, 1097)
 
-[node name="Control" type="Control"]
+[node name="Inventory" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource("1_keqng")
-script = SubResource("GDScript_r1ke1")
+script = ExtResource("1_gce7g")
 
 [node name="Inventory" type="Node" parent="."]
 script = ExtResource("1_vc0bn")
@@ -115,16 +78,16 @@ offset_bottom = 163.0
 
 [node name="LevelCaptionLabel" type="Label" parent="ExpirienceHBox"]
 modulate = Color(1, 1, 1, 0.498039)
-offset_top = 11.0
-offset_right = 159.0
-offset_bottom = 87.0
+offset_top = 12.0
+offset_right = 152.0
+offset_bottom = 89.0
 theme_override_font_sizes/font_size = 54
 text = "LEVEL"
 
 [node name="LevelValueMargin" type="MarginContainer" parent="ExpirienceHBox"]
-offset_left = 163.0
-offset_right = 269.0
-offset_bottom = 99.0
+offset_left = 156.0
+offset_right = 268.0
+offset_bottom = 102.0
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = -8
 theme_override_constants/margin_right = 15
@@ -133,16 +96,16 @@ theme_override_constants/margin_bottom = 8
 [node name="LevelValueLabel" type="Label" parent="ExpirienceHBox/LevelValueMargin"]
 offset_left = 15.0
 offset_top = -8.0
-offset_right = 91.0
-offset_bottom = 91.0
+offset_right = 97.0
+offset_bottom = 94.0
 theme_override_font_sizes/font_size = 72
 text = "11"
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="ExpirienceHBox"]
-offset_left = 273.0
-offset_top = 29.0
-offset_right = 529.0
-offset_bottom = 69.0
+offset_left = 272.0
+offset_top = 31.0
+offset_right = 528.0
+offset_bottom = 71.0
 size_flags_vertical = 4
 value = 50.0
 texture_under = ExtResource("3_v8qxy")
@@ -493,82 +456,82 @@ theme_override_styles/panel = SubResource("StyleBoxTexture_5qufb")
 offset_left = 47.0
 offset_top = 29.0
 offset_right = 710.0
-offset_bottom = 1092.0
+offset_bottom = 1160.0
 
 [node name="CommonVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox"]
 offset_right = 663.0
-offset_bottom = 317.0
+offset_bottom = 323.0
 
 [node name="NameLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox"]
 offset_right = 663.0
-offset_bottom = 67.0
+offset_bottom = 70.0
 theme_override_font_sizes/font_size = 48
 text = "Item name"
 
 [node name="ItemTypeMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox"]
-offset_top = 71.0
+offset_top = 74.0
 offset_right = 663.0
-offset_bottom = 116.0
+offset_bottom = 120.0
 theme_override_constants/margin_top = -12
 
 [node name="ItemTypeLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/ItemTypeMargin"]
 offset_top = -12.0
 offset_right = 663.0
-offset_bottom = 45.0
+offset_bottom = 46.0
 theme_override_colors/font_color = Color(1, 1, 1, 0.498039)
 theme_override_font_sizes/font_size = 40
 text = "Item type"
 uppercase = true
 
 [node name="PropertiesHBox" type="HBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox"]
-offset_top = 120.0
+offset_top = 124.0
 offset_right = 663.0
-offset_bottom = 262.0
+offset_bottom = 268.0
 theme_override_constants/separation = 32
 
 [node name="ValuesVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox"]
-offset_right = 84.0
-offset_bottom = 142.0
+offset_right = 82.0
+offset_bottom = 144.0
 theme_override_constants/separation = -16
 
 [node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox/ValuesVBox"]
-offset_right = 84.0
-offset_bottom = 79.0
+offset_right = 82.0
+offset_bottom = 80.0
 theme_override_font_sizes/font_size = 56
 text = "5-7"
 horizontal_alignment = 2
 
 [node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox/ValuesVBox"]
-offset_top = 63.0
-offset_right = 84.0
-offset_bottom = 142.0
+offset_top = 64.0
+offset_right = 82.0
+offset_bottom = 144.0
 theme_override_font_sizes/font_size = 56
 text = "5"
 horizontal_alignment = 2
 
 [node name="TextsVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox"]
-offset_left = 116.0
-offset_right = 527.0
-offset_bottom = 142.0
+offset_left = 114.0
+offset_right = 562.0
+offset_bottom = 144.0
 theme_override_constants/separation = -16
 
 [node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox/TextsVBox"]
-offset_right = 411.0
-offset_bottom = 79.0
+offset_right = 448.0
+offset_bottom = 80.0
 theme_override_font_sizes/font_size = 56
 text = "Defence"
 
 [node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox/TextsVBox"]
-offset_top = 63.0
-offset_right = 411.0
-offset_bottom = 142.0
+offset_top = 64.0
+offset_right = 448.0
+offset_bottom = 144.0
 theme_override_font_sizes/font_size = 56
 text = "Piercing damage"
 
 [node name="LineMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox"]
-offset_top = 266.0
+offset_top = 272.0
 offset_right = 663.0
-offset_bottom = 317.0
+offset_bottom = 323.0
 theme_override_constants/margin_left = -47
 theme_override_constants/margin_top = 17
 theme_override_constants/margin_right = -47
@@ -585,117 +548,117 @@ patch_margin_left = 120
 patch_margin_right = 120
 
 [node name="EffectsVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox"]
-offset_top = 321.0
+offset_top = 327.0
 offset_right = 663.0
-offset_bottom = 709.0
+offset_bottom = 720.0
 
 [node name="PropertiesHBox" type="HBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox"]
 offset_right = 663.0
-offset_bottom = 114.0
+offset_bottom = 116.0
 theme_override_constants/separation = 32
 
 [node name="ValuesVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox"]
 offset_right = 59.0
-offset_bottom = 114.0
+offset_bottom = 116.0
 theme_override_constants/separation = 0
 
 [node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox/ValuesVBox"]
 offset_right = 59.0
-offset_bottom = 57.0
+offset_bottom = 58.0
 theme_override_font_sizes/font_size = 40
 text = "5-7"
 horizontal_alignment = 2
 
 [node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox/ValuesVBox"]
-offset_top = 57.0
+offset_top = 58.0
 offset_right = 59.0
-offset_bottom = 114.0
+offset_bottom = 116.0
 theme_override_font_sizes/font_size = 40
 text = "5"
 horizontal_alignment = 2
 
 [node name="TextsVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox"]
 offset_left = 91.0
-offset_right = 386.0
-offset_bottom = 114.0
+offset_right = 409.0
+offset_bottom = 116.0
 theme_override_constants/separation = 0
 
 [node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox/TextsVBox"]
-offset_right = 295.0
-offset_bottom = 57.0
+offset_right = 318.0
+offset_bottom = 58.0
 theme_override_font_sizes/font_size = 40
 text = "Defence"
 
 [node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox/TextsVBox"]
-offset_top = 57.0
-offset_right = 295.0
-offset_bottom = 114.0
+offset_top = 58.0
+offset_right = 318.0
+offset_bottom = 116.0
 theme_override_font_sizes/font_size = 40
 text = "Piercing damage"
 
 [node name="RequiredsCaptionMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox"]
-offset_top = 118.0
+offset_top = 120.0
 offset_right = 663.0
-offset_bottom = 215.0
+offset_bottom = 218.0
 theme_override_constants/margin_top = 40
 
 [node name="RequiredsCaptionLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsCaptionMargin"]
 offset_top = 40.0
 offset_right = 663.0
-offset_bottom = 97.0
+offset_bottom = 98.0
 theme_override_colors/font_color = Color(1, 1, 1, 0.498039)
 theme_override_font_sizes/font_size = 40
 text = "Requireds:"
 
 [node name="RequiredsHBox" type="HBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox"]
-offset_top = 219.0
+offset_top = 222.0
 offset_right = 663.0
-offset_bottom = 333.0
+offset_bottom = 338.0
 theme_override_constants/separation = 32
 
 [node name="ValuesVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox"]
 offset_right = 59.0
-offset_bottom = 114.0
+offset_bottom = 116.0
 theme_override_constants/separation = 0
 
 [node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox/ValuesVBox"]
 offset_right = 59.0
-offset_bottom = 57.0
+offset_bottom = 58.0
 theme_override_font_sizes/font_size = 40
 text = "5-7"
 horizontal_alignment = 2
 
 [node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox/ValuesVBox"]
-offset_top = 57.0
+offset_top = 58.0
 offset_right = 59.0
-offset_bottom = 114.0
+offset_bottom = 116.0
 theme_override_font_sizes/font_size = 40
 text = "5"
 horizontal_alignment = 2
 
 [node name="TextsVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox"]
 offset_left = 91.0
-offset_right = 386.0
-offset_bottom = 114.0
+offset_right = 409.0
+offset_bottom = 116.0
 theme_override_constants/separation = 0
 
 [node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox/TextsVBox"]
-offset_right = 295.0
-offset_bottom = 57.0
+offset_right = 318.0
+offset_bottom = 58.0
 theme_override_font_sizes/font_size = 40
 text = "Defence"
 
 [node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox/TextsVBox"]
-offset_top = 57.0
-offset_right = 295.0
-offset_bottom = 114.0
+offset_top = 58.0
+offset_right = 318.0
+offset_bottom = 116.0
 theme_override_font_sizes/font_size = 40
 text = "Piercing damage"
 
 [node name="LineMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox"]
-offset_top = 337.0
+offset_top = 342.0
 offset_right = 663.0
-offset_bottom = 388.0
+offset_bottom = 393.0
 theme_override_constants/margin_left = -47
 theme_override_constants/margin_top = 17
 theme_override_constants/margin_right = -47
@@ -712,19 +675,19 @@ patch_margin_left = 120
 patch_margin_right = 120
 
 [node name="DescriptionVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox"]
-offset_top = 713.0
+offset_top = 724.0
 offset_right = 663.0
-offset_bottom = 995.0
+offset_bottom = 1063.0
 
 [node name="DescriptionMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/DescriptionVBox"]
 offset_right = 663.0
-offset_bottom = 222.0
+offset_bottom = 279.0
 theme_override_constants/margin_top = 14
 
 [node name="DescriptionLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/DescriptionVBox/DescriptionMargin"]
 offset_top = 14.0
 offset_right = 663.0
-offset_bottom = 222.0
+offset_bottom = 279.0
 theme_override_colors/font_color = Color(0.811765, 0.807843, 0.803922, 1)
 theme_override_font_sizes/font_size = 36
 text = "It takes a lot of strength to hold it with one hand. These weapons were forged by the Black Lord himself.
@@ -732,9 +695,9 @@ It contains a piece of the creator's soul."
 autowrap_mode = 2
 
 [node name="LineMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/DescriptionVBox"]
-offset_top = 226.0
+offset_top = 283.0
 offset_right = 663.0
-offset_bottom = 282.0
+offset_bottom = 339.0
 theme_override_constants/margin_left = -47
 theme_override_constants/margin_top = 47
 theme_override_constants/margin_right = -47
@@ -751,9 +714,9 @@ patch_margin_left = 120
 patch_margin_right = 120
 
 [node name="FooterVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox"]
-offset_top = 999.0
+offset_top = 1067.0
 offset_right = 663.0
-offset_bottom = 1063.0
+offset_bottom = 1131.0
 
 [node name="Control" type="Control" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox"]
 custom_minimum_size = Vector2(0, 64)
@@ -767,14 +730,14 @@ theme_override_constants/separation = 12
 
 [node name="WeightTextureRect" type="TextureRect" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/WeightHBox"]
 offset_right = 50.0
-offset_bottom = 67.0
+offset_bottom = 70.0
 texture = ExtResource("17_icgdy")
 stretch_mode = 3
 
 [node name="WeightLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/WeightHBox"]
 offset_left = 62.0
-offset_right = 127.0
-offset_bottom = 67.0
+offset_right = 129.0
+offset_bottom = 70.0
 theme_override_font_sizes/font_size = 48
 text = "1.5"
 
@@ -788,14 +751,14 @@ theme_override_constants/separation = 12
 
 [node name="DurabilityTextureRect" type="TextureRect" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/DurabilityHBox"]
 offset_right = 42.0
-offset_bottom = 67.0
+offset_bottom = 70.0
 texture = ExtResource("18_u4mpr")
 stretch_mode = 3
 
 [node name="DurabilityLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/DurabilityHBox"]
 offset_left = 54.0
-offset_right = 119.0
-offset_bottom = 67.0
+offset_right = 121.0
+offset_bottom = 70.0
 theme_override_font_sizes/font_size = 48
 text = "1.5"
 
@@ -807,14 +770,14 @@ offset_bottom = 67.0
 theme_override_constants/separation = 12
 
 [node name="CostLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/CostHBox"]
-offset_right = 65.0
-offset_bottom = 67.0
+offset_right = 67.0
+offset_bottom = 70.0
 theme_override_font_sizes/font_size = 48
 text = "1.5"
 
 [node name="CostTextureRect" type="TextureRect" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/CostHBox"]
-offset_left = 77.0
-offset_right = 119.0
-offset_bottom = 67.0
+offset_left = 79.0
+offset_right = 121.0
+offset_bottom = 70.0
 texture = ExtResource("19_epyyp")
 stretch_mode = 3

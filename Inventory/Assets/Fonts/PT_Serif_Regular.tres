@@ -1,6 +1,0 @@
-[gd_resource type="Font" load_steps=2 format=3 uid="uid://drb0rnh6fo4x1"]
-
-[ext_resource type="FontData" uid="uid://deimid2yxe3lr" path="res://Inventory/Assets/Fonts/PT_Serif-Web-Regular.ttf" id="1_svm3w"]
-
-[resource]
-data/0 = ExtResource("1_svm3w")
