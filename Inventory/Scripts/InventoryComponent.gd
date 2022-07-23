@@ -33,13 +33,15 @@ func AddItem(res_path: String, count: int)->InventoryItemSlot:
 	if (item == null):
 		return null
 	
+	var uid: int = ResourceLoader.get_resource_uid(res_path)
+	
 	if (item.IsConsumable()):
 		var consumable_item:BaseConsumableItem = item
-		var slot: InventoryItemSlot = FindInventoryItemSlot(res_path)
+		var slot: InventoryItemSlot = FindInventoryItemSlot(uid)
 
 		if (slot == null):
 			slot = InventoryItemSlot.new()
-			slot.ResourcePath = res_path
+			slot.ResUID = uid
 			slot.Count = 0
 			Inventory.append(slot)
 
@@ -55,7 +57,7 @@ func AddItem(res_path: String, count: int)->InventoryItemSlot:
 	var slot: InventoryItemSlot = null
 	for i in range(count):
 		slot = InventoryItemSlot.new()
-		slot.ResourcePath = res_path
+		slot.ResUID = uid
 		slot.Count = 1
 		Inventory.append(slot)
 		emit_signal("AddedItemEvent", res_path, item, 1, 1)
@@ -68,7 +70,10 @@ func RemoveItem(res_path: String, count: int)->bool:
 	if (item == null):
 		print("Item Resource ", res_path, " is not loaded!")
 		return false
-	var slot: InventoryItemSlot = FindInventoryItemSlot(res_path)
+		
+	var uid: int = ResourceLoader.get_resource_uid(res_path)
+	
+	var slot: InventoryItemSlot = FindInventoryItemSlot(uid)
 	if (slot == null):
 		print("Item ", res_path, " is not found in Inventory")
 		return false
@@ -177,9 +182,9 @@ func GetInventoryItems(item_type: Enums.EItemType)->Array[InventoryItemSlot]:
 	return out
 
 
-func FindInventoryItemSlot(res_path: String)->InventoryItemSlot:
+func FindInventoryItemSlot(res_uid: int)->InventoryItemSlot:
 	for Slot in Inventory:
-		if Slot.ResourcePath != res_path:
+		if Slot.ResUID != res_uid:
 			continue
 		return Slot
 	return null
