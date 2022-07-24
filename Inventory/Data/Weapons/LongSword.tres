@@ -1,11 +1,12 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://cn1hqf360jgqf"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cn1hqf360jgqf"]
 
 [ext_resource type="Script" path="res://Inventory/Scripts/Items/WeaponItem.gd" id="1_gfhy2"]
+[ext_resource type="Texture2D" uid="uid://bln5rvugf3660" path="res://Inventory/Assets/UI/Items/ItemSpearB.png" id="1_ssfoe"]
 
 [resource]
-script = ExtResource( "1_gfhy2" )
+script = ExtResource("1_gfhy2")
 ItemName = "Long Sword"
 Weight = 3.5
-DetailsTitle = "Standard straight sword"
-DetailsDescription = "This straight sword is sufficient in most respects, and effective in most situations if wielded properly. Those who aspire to master the sword are certain to wield this at some point during their journey."
+Icon = ExtResource("1_ssfoe")
+Description = ""
 StaminaCost = null

@@ -1,11 +1,14 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://bj0snkem3wpi"]
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bj0snkem3wpi"]
 
 [ext_resource type="Script" path="res://Inventory/Scripts/Items/BaseConsumableItem.gd" id="1_it2gl"]
+[ext_resource type="Texture2D" uid="uid://bj6wpvoeaheun" path="res://Inventory/Assets/UI/Items/24_stone.png" id="1_rbr1o"]
 
 [resource]
-script = ExtResource( "1_it2gl" )
-MaxCount = 99
-MaxStoredCount = 999
+script = ExtResource("1_it2gl")
 ItemName = "Lifegem"
+Weight = 0
+Icon = ExtResource("1_rbr1o")
 DetailsTitle = "Lifegem"
 DetailsDescription = "Small stone made up of crystallized souls. Gradually restores a small amount of hp.Often found near abandoned corpses, as if it were what remains of the soul"
+MaxCount = 99
+MaxStoredCount = 999

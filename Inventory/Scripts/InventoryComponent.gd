@@ -4,9 +4,9 @@ class_name InventoryComponent
 var Inventory: Array[InventoryItemSlot]
 var Equipment: Dictionary
 
-signal MoveItemToChest(res_path: String, item: Item, count: int)
-signal AddedItemEvent(res_path: String, item: Item, count: int, total_count: int)
-signal RemovedItemEvent(res_path: String, item: Item, removed_count: int, total_count: int)
+signal MoveItemToChest(item: Item, count: int)
+signal AddedItemEvent(slot: InventoryItemSlot, item: Item, count: int)
+signal RemovedItemEvent(slot: InventoryItemSlot, item: Item, removed_count: int)
 signal EquipItemChanged(slot_type: Enums.EEquipmentSlot, from_item_slot: InventoryItemSlot, to_item_slot: InventoryItemSlot)
 
 func _init():
@@ -48,10 +48,10 @@ func AddItem(res_path: String, count: int)->InventoryItemSlot:
 		var to_chest: int = max(slot.Count + count - consumable_item.MaxCount, 0)
 		var to_inventory: int = count - to_chest
 		if to_chest > 0:
-			emit_signal("MoveItemToChest", res_path, item, to_chest)
+			emit_signal("MoveItemToChest", item, to_chest)
 		slot.Count += to_inventory
 		if to_inventory > 0:
-			emit_signal("AddedItemEvent", res_path, item, to_inventory, slot.Count)
+			emit_signal("AddedItemEvent", slot, item, to_inventory)
 		return slot
 	
 	var slot: InventoryItemSlot = null
@@ -60,7 +60,7 @@ func AddItem(res_path: String, count: int)->InventoryItemSlot:
 		slot.ResUID = uid
 		slot.Count = 1
 		Inventory.append(slot)
-		emit_signal("AddedItemEvent", res_path, item, 1, 1)
+		emit_signal("AddedItemEvent", slot, item, 1)
 	
 	return slot
 
@@ -83,7 +83,7 @@ func RemoveItem(res_path: String, count: int)->bool:
 			Inventory.erase(slot)
 	else:
 		Inventory.erase(slot)	
-	emit_signal("RemovedItemEvent", res_path, item, count, slot.Count)
+	emit_signal("RemovedItemEvent", slot, item, count)
 	return true
 
 
