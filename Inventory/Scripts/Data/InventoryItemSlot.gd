@@ -1,10 +1,10 @@
+class_name InventoryItemSlot
 extends Object
 
-class_name InventoryItemSlot
 
-var ResUID: int = -1
-var Count: int = 1
-var EquipmentSlotType: Enums.EEquipmentSlot = Enums.EEquipmentSlot.None
+var res_uid: int = -1
+var count: int = 1
+var equipment_slot_type: Enums.EEquipmentSlot = Enums.EEquipmentSlot.NONE
 
-func GetItemInfo()->Item:
-	return load(ResourceUID.id_to_text(ResUID))
+func get_item_info()->Item:
+	return load(ResourceUID.id_to_text(res_uid))

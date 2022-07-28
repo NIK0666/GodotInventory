@@ -1,14 +1,16 @@
+class_name Item
 extends Resource
 
-class_name Item
 
-@export var ItemName: String = ""
-@export var Weight: float = 0
-@export var Icon: Texture2D
-@export var Description: String = ""
+@export var item_name: String = ""
+@export var weight: float = 0
+@export var icon: Texture2D
+@export var description: String = ""
 
-func IsConsumable()->bool:
+
+func is_consumable()->bool:
 	return false
-	
-func GetItemType():
+
+
+func get_item_type()->Enums.EItemType:
 	return Enums.EItemType.Item

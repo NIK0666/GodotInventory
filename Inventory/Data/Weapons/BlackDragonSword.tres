@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_epkbd")
-ItemName = "Black Dragon Sword"
-Weight = 4.0
-Icon = ExtResource("1_sjvf0")
-Description = ""
+item_name = "Black dragon sword"
+weight = 6.0
+icon = ExtResource("1_sjvf0")
+description = ""
 StaminaCost = null

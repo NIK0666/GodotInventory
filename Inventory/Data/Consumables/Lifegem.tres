@@ -5,10 +5,9 @@
 
 [resource]
 script = ExtResource("1_it2gl")
-ItemName = "Lifegem"
-Weight = 0
-Icon = ExtResource("1_rbr1o")
-DetailsTitle = "Lifegem"
-DetailsDescription = "Small stone made up of crystallized souls. Gradually restores a small amount of hp.Often found near abandoned corpses, as if it were what remains of the soul"
-MaxCount = 99
-MaxStoredCount = 999
+item_name = "Life gem"
+weight = 0.5
+icon = ExtResource("1_rbr1o")
+description = ""
+max_count = 10
+max_stored_count = 600

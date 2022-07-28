@@ -5,8 +5,8 @@
 
 [resource]
 script = ExtResource("1_gfhy2")
-ItemName = "Long Sword"
-Weight = 3.5
-Icon = ExtResource("1_ssfoe")
-Description = ""
+item_name = "Long sword"
+weight = 4.0
+icon = ExtResource("1_ssfoe")
+description = ""
 StaminaCost = null

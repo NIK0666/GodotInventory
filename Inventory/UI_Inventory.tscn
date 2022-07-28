@@ -230,6 +230,8 @@ theme_override_constants/v_separation = 16
 columns = 4
 
 [node name="Slot" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
+offset_left = 0.0
+offset_right = 256.0
 
 [node name="Slot2" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 272.0
@@ -244,7 +246,9 @@ offset_left = 816.0
 offset_right = 1072.0
 
 [node name="Slot5" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
+offset_left = 0.0
 offset_top = 272.0
+offset_right = 256.0
 offset_bottom = 528.0
 
 [node name="Slot6" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
@@ -266,7 +270,9 @@ offset_right = 1072.0
 offset_bottom = 528.0
 
 [node name="Slot9" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
+offset_left = 0.0
 offset_top = 544.0
+offset_right = 256.0
 offset_bottom = 800.0
 
 [node name="Slot10" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
@@ -288,7 +294,9 @@ offset_right = 1072.0
 offset_bottom = 800.0
 
 [node name="Slot13" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
+offset_left = 0.0
 offset_top = 816.0
+offset_right = 256.0
 offset_bottom = 1072.0
 
 [node name="Slot14" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
@@ -310,7 +318,9 @@ offset_right = 1072.0
 offset_bottom = 1072.0
 
 [node name="Slot17" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
+offset_left = 0.0
 offset_top = 1088.0
+offset_right = 256.0
 offset_bottom = 1344.0
 
 [node name="Slot18" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
@@ -332,7 +342,9 @@ offset_right = 1072.0
 offset_bottom = 1344.0
 
 [node name="Slot21" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
+offset_left = 0.0
 offset_top = 1360.0
+offset_right = 256.0
 offset_bottom = 1616.0
 
 [node name="Slot22" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
@@ -363,93 +375,115 @@ offset_right = -128.0
 offset_bottom = 1996.0
 
 [node name="RHand1_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+offset_left = 0.0
+script = null
 
 [node name="RHand2_Slot" parent="EquipmentControl" instance=ExtResource("14_5ke3s")]
 offset_left = 240.0
 offset_top = 28.0
 offset_right = 436.0
 offset_bottom = 224.0
+script = null
 
 [node name="RHand3_Slot" parent="EquipmentControl" instance=ExtResource("14_5ke3s")]
 offset_left = 452.0
 offset_top = 28.0
 offset_right = 648.0
 offset_bottom = 224.0
+script = null
 
 [node name="LHand1_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+offset_left = 0.0
 offset_top = 240.0
 offset_bottom = 464.0
+script = null
 
 [node name="LHand2_Slot" parent="EquipmentControl" instance=ExtResource("14_5ke3s")]
 offset_left = 240.0
 offset_top = 268.0
 offset_right = 436.0
 offset_bottom = 464.0
+script = null
 
 [node name="LHand3_Slot" parent="EquipmentControl" instance=ExtResource("14_5ke3s")]
 offset_left = 452.0
 offset_top = 268.0
 offset_right = 648.0
 offset_bottom = 464.0
+script = null
 
 [node name="Helm_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+offset_left = 0.0
 offset_top = 544.0
 offset_bottom = 768.0
+script = null
 
 [node name="Armor_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 240.0
 offset_top = 544.0
 offset_right = 464.0
 offset_bottom = 768.0
+script = null
 
 [node name="Boots_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 480.0
 offset_top = 544.0
 offset_right = 704.0
 offset_bottom = 768.0
+script = null
 
 [node name="Amulet_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+offset_left = 0.0
 offset_top = 848.0
 offset_bottom = 1072.0
+script = null
 
 [node name="Consumable1_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+offset_left = 0.0
 offset_top = 1152.0
 offset_bottom = 1376.0
+script = null
 
 [node name="Consumable2_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 240.0
 offset_top = 1152.0
 offset_right = 464.0
 offset_bottom = 1376.0
+script = null
 
 [node name="Consumable3_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 480.0
 offset_top = 1152.0
 offset_right = 704.0
 offset_bottom = 1376.0
+script = null
 
 [node name="Consumable4_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
+offset_left = 0.0
 offset_top = 1392.0
 offset_bottom = 1616.0
+script = null
 
 [node name="Consumable5_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 240.0
 offset_top = 1392.0
 offset_right = 464.0
 offset_bottom = 1616.0
+script = null
 
 [node name="Consumable6_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 480.0
 offset_top = 1392.0
 offset_right = 704.0
 offset_bottom = 1616.0
+script = null
 
 [node name="ItemInfoPanel" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(757, 400)
 offset_left = 1214.0
-offset_top = 380.0
+offset_top = 373.0
 offset_right = 1971.0
-offset_bottom = 1463.0
+offset_bottom = 1562.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_5qufb")
 
 [node name="ItemInfoVBox" type="VBoxContainer" parent="ItemInfoPanel"]
@@ -781,3 +815,20 @@ offset_right = 121.0
 offset_bottom = 70.0
 texture = ExtResource("19_epyyp")
 stretch_mode = 3
+
+[connection signal="mouse_entered" from="EquipmentControl/RHand1_Slot" to="EquipmentControl/RHand1_Slot" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="EquipmentControl/RHand2_Slot" to="EquipmentControl/RHand2_Slot" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="EquipmentControl/RHand3_Slot" to="EquipmentControl/RHand3_Slot" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="EquipmentControl/LHand1_Slot" to="EquipmentControl/LHand1_Slot" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="EquipmentControl/LHand2_Slot" to="EquipmentControl/LHand2_Slot" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="EquipmentControl/LHand3_Slot" to="EquipmentControl/LHand3_Slot" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="EquipmentControl/Helm_Slot" to="EquipmentControl/Helm_Slot" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="EquipmentControl/Armor_Slot" to="EquipmentControl/Armor_Slot" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="EquipmentControl/Boots_Slot" to="EquipmentControl/Boots_Slot" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="EquipmentControl/Amulet_Slot" to="EquipmentControl/Amulet_Slot" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="EquipmentControl/Consumable1_Slot" to="EquipmentControl/Consumable1_Slot" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="EquipmentControl/Consumable2_Slot" to="EquipmentControl/Consumable2_Slot" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="EquipmentControl/Consumable3_Slot" to="EquipmentControl/Consumable3_Slot" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="EquipmentControl/Consumable4_Slot" to="EquipmentControl/Consumable4_Slot" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="EquipmentControl/Consumable5_Slot" to="EquipmentControl/Consumable5_Slot" method="_on_mouse_entered"]
+[connection signal="mouse_entered" from="EquipmentControl/Consumable6_Slot" to="EquipmentControl/Consumable6_Slot" method="_on_mouse_entered"]

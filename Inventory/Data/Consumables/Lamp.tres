@@ -1,0 +1,13 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cis3inn22g50a"]
+
+[ext_resource type="Texture2D" uid="uid://71tnogm4582y" path="res://Inventory/Assets/UI/Items/07_lamp.png" id="1_5heo2"]
+[ext_resource type="Script" path="res://Inventory/Scripts/Items/BaseConsumableItem.gd" id="2_4jrlu"]
+
+[resource]
+script = ExtResource("2_4jrlu")
+item_name = "Lamp"
+weight = 0.2
+icon = ExtResource("1_5heo2")
+description = ""
+max_count = 10
+max_stored_count = 600

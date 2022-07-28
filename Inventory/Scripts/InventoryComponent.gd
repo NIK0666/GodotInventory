@@ -1,210 +1,230 @@
+class_name InventoryComponent
 extends Node
 
-class_name InventoryComponent
-var Inventory: Array[InventoryItemSlot]
-var Equipment: Dictionary
 
-signal MoveItemToChest(item: Item, count: int)
-signal AddedItemEvent(slot: InventoryItemSlot, item: Item, count: int)
-signal RemovedItemEvent(slot: InventoryItemSlot, item: Item, removed_count: int)
-signal EquipItemChanged(slot_type: Enums.EEquipmentSlot, from_item_slot: InventoryItemSlot, to_item_slot: InventoryItemSlot)
+signal moved_item_to_chest(item: Item, count: int)
+signal added_item(slot: InventoryItemSlot, item: Item, count: int)
+signal removed_item(slot: InventoryItemSlot, item: Item, removed_count: int)
+signal equip_item_changed(slot_type: Enums.EEquipmentSlot, 
+		from_item_slot: InventoryItemSlot, to_item_slot: InventoryItemSlot)
 
-func _init():
-	Equipment[Enums.EEquipmentSlot.LHand1] = null
-	Equipment[Enums.EEquipmentSlot.LHand2] = null
-	Equipment[Enums.EEquipmentSlot.LHand3] = null
-	Equipment[Enums.EEquipmentSlot.RHand1] = null
-	Equipment[Enums.EEquipmentSlot.RHand2] = null
-	Equipment[Enums.EEquipmentSlot.RHand3] = null
-	Equipment[Enums.EEquipmentSlot.Helm] = null
-	Equipment[Enums.EEquipmentSlot.Armor] = null
-	Equipment[Enums.EEquipmentSlot.Boots] = null
-	Equipment[Enums.EEquipmentSlot.Amulet] = null
-	Equipment[Enums.EEquipmentSlot.Consumables1] = null
-	Equipment[Enums.EEquipmentSlot.Consumables2] = null
-	Equipment[Enums.EEquipmentSlot.Consumables3] = null
-	Equipment[Enums.EEquipmentSlot.Consumables4] = null
-	Equipment[Enums.EEquipmentSlot.Consumables5] = null
-	Equipment[Enums.EEquipmentSlot.Consumables6] = null
+var _inventory: Array[InventoryItemSlot]
+var _equipment: Dictionary = {
+	Enums.EEquipmentSlot.L_HAND_1: null,
+	Enums.EEquipmentSlot.L_HAND_2: null,
+	Enums.EEquipmentSlot.L_HAND_3: null,
+	Enums.EEquipmentSlot.R_HAND_1: null,
+	Enums.EEquipmentSlot.R_HAND_2: null,
+	Enums.EEquipmentSlot.R_HAND_3: null,
+	Enums.EEquipmentSlot.HELM: null,
+	Enums.EEquipmentSlot.ARMOR: null,
+	Enums.EEquipmentSlot.BOOTS: null,
+	Enums.EEquipmentSlot.AMULET: null,
+	Enums.EEquipmentSlot.CONSUMABLE_1: null,
+	Enums.EEquipmentSlot.CONSUMABLE_2: null,
+	Enums.EEquipmentSlot.CONSUMABLE_3: null,
+	Enums.EEquipmentSlot.CONSUMABLE_4: null,
+	Enums.EEquipmentSlot.CONSUMABLE_5: null,
+	Enums.EEquipmentSlot.CONSUMABLE_6: null,
+}
 
 
-func AddItem(res_path: String, count: int)->InventoryItemSlot:
-	var item: Item = load(res_path)
+func add_item(res_path: String, count: int)->InventoryItemSlot:
+	var item: Item = load(res_path) as Item
 	if (item == null):
 		return null
 	
 	var uid: int = ResourceLoader.get_resource_uid(res_path)
 	
-	if (item.IsConsumable()):
-		var consumable_item:BaseConsumableItem = item
-		var slot: InventoryItemSlot = FindInventoryItemSlot(uid)
+	if item.is_consumable():
+		var consumable_item: BaseConsumableItem = item
+		var slot: InventoryItemSlot = _find_inventory_item_slot(uid)
 
-		if (slot == null):
+		if slot == null:
 			slot = InventoryItemSlot.new()
-			slot.ResUID = uid
-			slot.Count = 0
-			Inventory.append(slot)
-
-		var to_chest: int = max(slot.Count + count - consumable_item.MaxCount, 0)
+			slot.res_uid = uid
+			slot.count = 0
+			_inventory.append(slot)
+		
+		var to_chest: int = max(slot.count + count - consumable_item.max_count, 0)
 		var to_inventory: int = count - to_chest
 		if to_chest > 0:
-			emit_signal("MoveItemToChest", item, to_chest)
-		slot.Count += to_inventory
+			emit_signal("moved_item_to_chest", item, to_chest)
+		slot.count += to_inventory
 		if to_inventory > 0:
-			emit_signal("AddedItemEvent", slot, item, to_inventory)
+			emit_signal("added_item", slot, item, to_inventory)
 		return slot
-	
+		
 	var slot: InventoryItemSlot = null
 	for i in range(count):
 		slot = InventoryItemSlot.new()
-		slot.ResUID = uid
-		slot.Count = 1
-		Inventory.append(slot)
-		emit_signal("AddedItemEvent", slot, item, 1)
+		slot.res_uid = uid
+		slot.count = 1
+		_inventory.append(slot)
+		emit_signal("added_item", slot, item, 1)
 	
 	return slot
 
 
-func RemoveItem(res_path: String, count: int)->bool:
+func remove_item(res_path: String, count: int)->bool:
 	var item: Item = load(res_path)
-	if (item == null):
+	if item == null:
 		print("Item Resource ", res_path, " is not loaded!")
 		return false
 		
 	var uid: int = ResourceLoader.get_resource_uid(res_path)
-	
-	var slot: InventoryItemSlot = FindInventoryItemSlot(uid)
-	if (slot == null):
+	var slot: InventoryItemSlot = _find_inventory_item_slot(uid)
+	if slot == null:
 		print("Item ", res_path, " is not found in Inventory")
 		return false
-	if (item.IsConsumable()):
-		slot.Count = max(slot.Count - count, 0)
-		if (slot.Count == 0):
-			Inventory.erase(slot)
+	
+	if item.is_consumable():
+		slot.count = max(slot.count - count, 0)
+		if (slot.count == 0):
+			_inventory.erase(slot)
 	else:
-		Inventory.erase(slot)	
-	emit_signal("RemovedItemEvent", slot, item, count)
+		_inventory.erase(slot)
+	
+	emit_signal("removed_item", slot, item, count)
 	return true
 
 
-func SetItems(items: Array[ItemSlotInfo], remove_all_items: bool):
-	if (remove_all_items):
-		Inventory.clear()
+func set_items(items: Array[ItemSlotInfo], remove_all_items: bool)->Array[InventoryItemSlot]:
+	if remove_all_items:
+		_inventory.clear()
+	
 	var out_items: Array[InventoryItemSlot]
 	for slot_info in items:
-		var item_slot = AddItem(slot_info.ResourcePath, slot_info.Count)
+		var item_slot: InventoryItemSlot = add_item(slot_info.resource_path, slot_info.count)
 		out_items.append(item_slot)
-		Inventory.append(item_slot)
-		if (slot_info.EquipmentSlotType != Enums.EEquipmentSlot.None):
-			SetEquipItemToSlot(item_slot, slot_info.EquipmentSlotType)
+		_inventory.append(item_slot)
+		if (slot_info.equipment_slot_type != Enums.EEquipmentSlot.NONE):
+			set_equip_item_to_slot(item_slot, slot_info.equipment_slot_type)
+	
 	return out_items
 
 
-func SetEquipItem(inventory_item_slot: InventoryItemSlot)->bool:
-	if (inventory_item_slot == null):
-		print("SetEquipItem - Invalid InventoryItemSlot!")
+func set_equip_item(inventory_item_slot: InventoryItemSlot)->bool:
+	if inventory_item_slot == null:
+		print("set_equip_item - Invalid InventoryItemSlot!")
 		return false
 	
-	var item_type = inventory_item_slot.GetItemInfo().GetItemType()
-	for slot_type in Equipment.keys():
-		var slot_item_type = GetItemType(slot_type)
-		if (item_type != slot_item_type):
+	var item_type: Enums.EItemType = inventory_item_slot.get_item_info().get_item_type()
+	for slot_type in _equipment.keys():
+		if (item_type != _get_item_type(slot_type)):
 			continue
 		
-		if (Equipment[slot_type] != null):
+		if (_equipment[slot_type] != null):
 			continue
 			
-		Equipment[slot_type] = inventory_item_slot
-		Equipment[slot_type].EquipmentSlotType = slot_type
+		_equipment[slot_type] = inventory_item_slot
+		_equipment[slot_type].equipment_slot_type = slot_type
 		
-		emit_signal("EquipItemChanged", slot_type, null, Equipment[slot_type])
+		emit_signal("equip_item_changed", slot_type, null, _equipment[slot_type])
 		return true
 	
 	return false
 
 
-func SetEquipItemToSlot(inventory_item_slot: InventoryItemSlot, equipment_slot: Enums.EEquipmentSlot)->bool:
-	if (!Equipment.keys().has(equipment_slot)):
-		print("SetEquipItemToSlot - Slot type ", equipment_slot, " is not found!")
+func set_equip_item_to_slot(inventory_item_slot: InventoryItemSlot, 
+		equipment_slot: Enums.EEquipmentSlot)->bool:
+	if !_equipment.keys().has(equipment_slot):
+		print("set_equip_item_to_slot - Slot type ", equipment_slot, " is not found!")
 		return false
 	
-	var prev_slot = Equipment[equipment_slot]
-	if (prev_slot == inventory_item_slot):
-		print("SetEquipItemToSlot - This item \"", inventory_item_slot.GetItemInfo().ItemName, "\" was already added!")
+	var prev_slot: InventoryItemSlot = _equipment[equipment_slot]
+	if prev_slot == inventory_item_slot:
+		print("set_equip_item_to_slot - This item \"", inventory_item_slot.get_item_info().ItemName, 
+				"\" was already added!")
 		return false
-	if (prev_slot != null):
-		ClearEquipSlot(prev_slot.EquipmentSlotType)
 	
-	if (inventory_item_slot.EquipmentSlotType != Enums.EEquipmentSlot.None):
-		print("TODO: ClearEquipSlot")
-		ClearEquipSlot(inventory_item_slot.EquipmentSlotType)
+	if prev_slot != null:
+		clear_equip_slot(prev_slot.equipment_slot_type)
 	
-	Equipment[equipment_slot] = inventory_item_slot
-	Equipment[equipment_slot].EquipmentSlotType = equipment_slot
+	if inventory_item_slot.equipment_slot_type != Enums.EEquipmentSlot.NONE:
+		clear_equip_slot(inventory_item_slot.equipment_slot_type)
+	
+	_equipment[equipment_slot] = inventory_item_slot
+	_equipment[equipment_slot].equipment_slot_type = equipment_slot
 		
-	emit_signal("EquipItemChanged", equipment_slot, prev_slot, Equipment[equipment_slot])
+	emit_signal("equip_item_changed", equipment_slot, prev_slot, _equipment[equipment_slot])
 	return true
 
 
-func ClearEquipSlot(equipment_slot: Enums.EEquipmentSlot)->bool:
-	if (!Equipment.keys().has(equipment_slot)):
-		print("ClearEquipSlot - Slot type ", equipment_slot, " is not found!")
-		return false
-		
-	var prev_slot = Equipment[equipment_slot]
-	if (prev_slot == null):
-		print("ClearEquipSlot - Slot already empty!")
-		return false
-	
-	prev_slot.EquipmentSlotType = Enums.EEquipmentSlot.None
-	Equipment[equipment_slot] = null
-	
-	emit_signal("EquipItemChanged", equipment_slot, prev_slot, null)
-	return true
-
-
-func GetInventoryItemSlotByEquipmentType(equipment_slot: Enums.EEquipmentSlot)->InventoryItemSlot:
-	if (!Equipment.keys().has(equipment_slot)):
-		print("GetInventoryItemSlotByEquipmentType - Slot type ", equipment_slot, " is not found!")
+func get_inventory_item_slot_by_element_type(equipment_slot: Enums.EEquipmentSlot)->InventoryItemSlot:
+	if !_equipment.keys().has(equipment_slot):
+		print("get_inventory_item_slot_by_element_type - Slot type ", equipment_slot, " is not found!")
 		return null
-	return Equipment[equipment_slot]
+	
+	return _equipment[equipment_slot]
 
 
-func GetEquipments()->Dictionary:
-	return Equipment
+func get_equipments()->Dictionary:
+	return _equipment
 
 
-func GetInventoryItems(item_type: Enums.EItemType)->Array[InventoryItemSlot]:
+func get_inventory_items(item_type: Enums.EItemType)->Array[InventoryItemSlot]:
 	var out: Array[InventoryItemSlot]
-	for item in Inventory:
-		if item.GetItemInfo().GetItemType() == item_type:
+	for item in _inventory:
+		if item.get_item_info().get_item_type() == item_type:
 			out.append(item)
+	
 	return out
 
 
-func FindInventoryItemSlot(res_uid: int)->InventoryItemSlot:
-	for Slot in Inventory:
-		if Slot.ResUID != res_uid:
+func clear_equip_slot(equipment_slot: Enums.EEquipmentSlot)->bool:
+	if !_equipment.keys().has(equipment_slot):
+		print("clear_equip_slot - Slot type ", equipment_slot, " is not found!")
+		return false
+		
+	var prev_slot: InventoryItemSlot = _equipment[equipment_slot]
+	if (prev_slot == null):
+		print("clear_equip_slot - Slot already empty!")
+		return false
+	
+	prev_slot.equipment_slot_type = Enums.EEquipmentSlot.NONE
+	_equipment[equipment_slot] = null
+	
+	emit_signal("equip_item_changed", equipment_slot, prev_slot, null)
+	return true
+
+
+func _find_inventory_item_slot(res_uid: int)->InventoryItemSlot:
+	for slot in _inventory:
+		if slot.res_uid != res_uid:
 			continue
-		return Slot
+		return slot
+	
 	return null
 
 
-func GetItemType(slot_type: Enums.EEquipmentSlot):
-	if (slot_type == Enums.EEquipmentSlot.LHand1 || slot_type == Enums.EEquipmentSlot.LHand2 || slot_type == Enums.EEquipmentSlot.LHand3 ||
-	slot_type == Enums.EEquipmentSlot.RHand1 || slot_type == Enums.EEquipmentSlot.RHand2 || slot_type == Enums.EEquipmentSlot.RHand3):
-		return Enums.EItemType.Weapon
-	if (slot_type == Enums.EItemType.Helm):
-		return Enums.EItemType.Helm
-	if (slot_type == Enums.EItemType.Armor):
-		return Enums.EItemType.Armor
-	if (slot_type == Enums.EItemType.Boots):
-		return Enums.EItemType.Boots
-	if (slot_type == Enums.EItemType.Amulet):
-		return Enums.EItemType.Amulet
-	if (slot_type == Enums.EEquipmentSlot.Consumables1 || slot_type == Enums.EEquipmentSlot.Consumables2 ||
-	slot_type == Enums.EEquipmentSlot.Consumables3 || slot_type == Enums.EEquipmentSlot.Consumables4 ||
-	slot_type == Enums.EEquipmentSlot.Consumables5 || slot_type == Enums.EEquipmentSlot.Consumables6):
-		return Enums.EItemType.Consumable
+func _get_item_type(slot_type: Enums.EEquipmentSlot)->Enums.EItemType:
+	if (slot_type == Enums.EEquipmentSlot.L_HAND_1 
+			or slot_type == Enums.EEquipmentSlot.L_HAND_2 
+			or slot_type == Enums.EEquipmentSlot.L_HAND_3 
+			or slot_type == Enums.EEquipmentSlot.R_HAND_1 
+			or slot_type == Enums.EEquipmentSlot.R_HAND_2 
+			or slot_type == Enums.EEquipmentSlot.R_HAND_3):
+		return Enums.EItemType.WEAPON
 	
-	return Enums.EItemType.Item
+	if slot_type == Enums.EItemType.HELM:
+		return Enums.EItemType.HELM
+	
+	if slot_type == Enums.EItemType.ARMOR:
+		return Enums.EItemType.ARMOR
+	
+	if slot_type == Enums.EItemType.BOOTS:
+		return Enums.EItemType.BOOTS
+	
+	if slot_type == Enums.EItemType.AMULET:
+		return Enums.EItemType.AMULET
+	
+	if (slot_type == Enums.EEquipmentSlot.CONSUMABLE_1
+			or slot_type == Enums.EEquipmentSlot.CONSUMABLE_2
+			or slot_type == Enums.EEquipmentSlot.CONSUMABLE_3
+			or slot_type == Enums.EEquipmentSlot.CONSUMABLE_4
+			or slot_type == Enums.EEquipmentSlot.CONSUMABLE_5
+			or slot_type == Enums.EEquipmentSlot.CONSUMABLE_6):
+		return Enums.EItemType.CONSUMABLE
+	
+	return Enums.EItemType.ITEM

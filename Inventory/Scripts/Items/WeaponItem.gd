@@ -1,8 +1,9 @@
+class_name WeaponItem
 extends Item
 
-class_name WeaponItem
 
-@export var StaminaCost: float
+@export var stamina_cost: float
 
-func GetItemType():
-	return Enums.EItemType.Weapon
+
+func get_item_type():
+	return Enums.EItemType.WEAPON

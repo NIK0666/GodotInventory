@@ -1,68 +1,68 @@
 extends Node
 
 enum EWeaponSubtype {
-	Sword,
-	Axe,
-	Spear,
-	Bow,
-	Crossbow,
-	Shield,
-	Fists
+	SWORD,
+	AXE,
+	SPEAR,
+	BOW,
+	CROSSBOW,
+	SHIELD,
+	FISTS,
 }
 
 enum EDamageType {
-	Standard = 0,
-	Pierce,
-	Strike,
-	Slash,
-	Standard_Pierce,
-	Slash_Pierce
+	STANDARD = 0,
+	PIERCE,
+	STRIKE,
+	SLASH,
+	STANDARD_PIERCE,
+	SLASH_PIERCE,
 }
 
 enum EScalingValue {
-	NoScaling = 0,
+	NO_SCALING = 0,
 	E,
 	D,
 	C,
 	B,
 	A,
-	S
+	S,
 }
 
 enum EItemType {
-	Item,
-	Weapon,
-	Armor,
-	Helm,
-	Boots,
-	Amulet,
-	Consumable
+	ITEM,
+	WEAPON,
+	ARMOR,
+	HELM,
+	BOOTS,
+	AMULET,
+	CONSUMABLE,
 }
 
 enum EItemEffectType {
-	None = 0,
-	MaxHP,
-	MaxFP,
-	RegenHP,
-	MaxEquipLoad
+	NONE = 0,
+	MAX_HP,
+	MAX_FP,
+	REGEN_HP,
+	MAX_EQUIP_LOAD,
 }
 
 enum EEquipmentSlot {
-	None = 0,
-	LHand1,
-	LHand2,
-	LHand3,
-	RHand1,
-	RHand2,
-	RHand3,
-	Helm,
-	Armor,
-	Boots,
-	Amulet,
-	Consumables1,
-	Consumables2,
-	Consumables3,
-	Consumables4,
-	Consumables5,
-	Consumables6
+	NONE = 0,
+	L_HAND_1,
+	L_HAND_2,
+	L_HAND_3,
+	R_HAND_1,
+	R_HAND_2,
+	R_HAND_3,
+	HELM,
+	ARMOR,
+	BOOTS,
+	AMULET,
+	CONSUMABLE_1,
+	CONSUMABLE_2,
+	CONSUMABLE_3,
+	CONSUMABLE_4,
+	CONSUMABLE_5,
+	CONSUMABLE_6,
 }
