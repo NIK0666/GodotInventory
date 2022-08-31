@@ -6,8 +6,10 @@
 [resource]
 script = ExtResource("2_44mdw")
 item_name = "Potion"
-weight = 0.1
 icon = ExtResource("1_d2hef")
-description = ""
+description = "If you take this magic potion inside, then your health will be restored very quickly."
+effects = null
+weight = 0.1
+base_cost = 0.0
 max_count = 10
 max_stored_count = 600

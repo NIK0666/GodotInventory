@@ -1,24 +1,28 @@
-[gd_scene load_steps=28 format=3 uid="uid://docdvp3a132je"]
+[gd_scene load_steps=31 format=3 uid="uid://docdvp3a132je"]
 
 [ext_resource type="Script" path="res://Inventory/Scripts/UI/InventoryUI.gd" id="1_gce7g"]
 [ext_resource type="Script" path="res://Inventory/Scripts/InventoryComponent.gd" id="1_vc0bn"]
 [ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/ProgressBG.tres" id="3_v8qxy"]
 [ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/ProgressFG.tres" id="4_qd4np"]
 [ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/TypesBackground.tres" id="5_djh5v"]
-[ext_resource type="Texture2D" uid="uid://bn55yv2xyn1w0" path="res://Inventory/Assets/UI/Inventory.sprites/Selector.tres" id="6_upgcp"]
+[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/Selector.tres" id="6_upgcp"]
 [ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/TypeWeapon.tres" id="7_fpbj7"]
 [ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/TypeArmor.tres" id="8_wxyra"]
 [ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/TypePotion.tres" id="9_mbe44"]
 [ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/TypeAmulet.tres" id="10_bg8sh"]
 [ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/TypeNote.tres" id="11_7vpm1"]
-[ext_resource type="PackedScene" uid="uid://c5xaeq38oorc2" path="res://Inventory/InventoryItemSlot.tscn" id="12_qqhls"]
-[ext_resource type="PackedScene" uid="uid://dt1m2f4ikd0dy" path="res://Inventory/EquipItemSlot.tscn" id="13_c7ba0"]
+[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/TypeOther.tres" id="12_3p6pn"]
+[ext_resource type="PackedScene" uid="uid://cuq64d6j7da2k" path="res://Inventory/InventoryItemSlot.tscn" id="12_qqhls"]
+[ext_resource type="PackedScene" uid="uid://doiqhs31shcys" path="res://Inventory/EquipItemSlot.tscn" id="13_c7ba0"]
 [ext_resource type="PackedScene" uid="uid://cxh6l2bwvmjp0" path="res://Inventory/EquipSmallItemSlot.tscn" id="14_5ke3s"]
-[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/ItemInfoPanel.tres" id="15_jpxbh"]
-[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/Line.tres" id="16_gqv8v"]
-[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/WeightIcon.tres" id="17_icgdy"]
-[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/HammerIcon.tres" id="18_u4mpr"]
-[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/CoinIcon.tres" id="19_epyyp"]
+[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/PlaceholderRightHandWeapon.tres" id="14_b63hr"]
+[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/PlaceholderLeftHandWeapon.tres" id="16_ch1aq"]
+[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/PlaceholderHelm.tres" id="17_k1sgv"]
+[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/PlaceholderArmor.tres" id="18_8xw1s"]
+[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/PlaceholderBoots.tres" id="19_xm2tn"]
+[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/PlaceholderConsumables.tres" id="20_3umgi"]
+[ext_resource type="Texture2D" uid="uid://bu6g6r2jph5b8" path="res://Inventory/Assets/UI/Items/ItemArmor.png" id="20_ojgqe"]
+[ext_resource type="PackedScene" uid="uid://dx04jk0a3pl5l" path="res://Inventory/ItemInfoPanel.tscn" id="21_hhiou"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wgnmj"]
 texture = ExtResource("5_djh5v")
@@ -41,14 +45,6 @@ region_rect = Rect2(0, 0, 185, 178)
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j8hqk"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_6pcsf"]
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5qufb"]
-texture = ExtResource("15_jpxbh")
-margin_left = 47.0
-margin_top = 29.0
-margin_right = 47.0
-margin_bottom = 29.0
-region_rect = Rect2(0, 0, 771, 1097)
 
 [node name="Inventory" type="Control"]
 anchor_right = 1.0
@@ -130,8 +126,8 @@ alignment = 1
 
 [node name="WeaponButton" type="Button" parent="TypesPanel/TypesHBox"]
 custom_minimum_size = Vector2(161, 154)
-offset_left = 194.0
-offset_right = 355.0
+offset_left = 114.0
+offset_right = 275.0
 offset_bottom = 154.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.4)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.4)
@@ -149,8 +145,8 @@ icon_alignment = 1
 
 [node name="ArmorButton" type="Button" parent="TypesPanel/TypesHBox"]
 custom_minimum_size = Vector2(161, 154)
-offset_left = 355.0
-offset_right = 516.0
+offset_left = 275.0
+offset_right = 436.0
 offset_bottom = 154.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.4)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.4)
@@ -167,8 +163,8 @@ icon_alignment = 1
 
 [node name="PotionButton" type="Button" parent="TypesPanel/TypesHBox"]
 custom_minimum_size = Vector2(161, 154)
-offset_left = 516.0
-offset_right = 677.0
+offset_left = 436.0
+offset_right = 597.0
 offset_bottom = 154.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.4)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.4)
@@ -185,8 +181,8 @@ icon_alignment = 1
 
 [node name="AmuletButton" type="Button" parent="TypesPanel/TypesHBox"]
 custom_minimum_size = Vector2(161, 154)
-offset_left = 677.0
-offset_right = 838.0
+offset_left = 597.0
+offset_right = 758.0
 offset_bottom = 154.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.4)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.4)
@@ -203,8 +199,8 @@ icon_alignment = 1
 
 [node name="NoteButton" type="Button" parent="TypesPanel/TypesHBox"]
 custom_minimum_size = Vector2(161, 154)
-offset_left = 838.0
-offset_right = 999.0
+offset_left = 758.0
+offset_right = 919.0
 offset_bottom = 154.0
 theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.4)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.4)
@@ -219,12 +215,31 @@ button_group = SubResource("ButtonGroup_6pcsf")
 icon = ExtResource("11_7vpm1")
 icon_alignment = 1
 
+[node name="OtherButton" type="Button" parent="TypesPanel/TypesHBox"]
+custom_minimum_size = Vector2(161, 154)
+offset_left = 919.0
+offset_right = 1080.0
+offset_bottom = 154.0
+theme_override_colors/icon_normal_color = Color(1, 1, 1, 0.4)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 0.4)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_udjxh")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_flmrl")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_xip3g")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_oa0b6")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_j8hqk")
+toggle_mode = true
+action_mode = 0
+button_group = SubResource("ButtonGroup_6pcsf")
+icon = ExtResource("12_3p6pn")
+icon_alignment = 1
+
 [node name="InventoryGrid" type="GridContainer" parent="."]
 custom_minimum_size = Vector2(1072, 1616)
 offset_left = 128.0
 offset_top = 380.0
 offset_right = 1200.0
 offset_bottom = 1996.0
+mouse_filter = 2
 theme_override_constants/h_separation = 16
 theme_override_constants/v_separation = 16
 columns = 4
@@ -232,138 +247,162 @@ columns = 4
 [node name="Slot" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 0.0
 offset_right = 256.0
+mouse_filter = 1
 
 [node name="Slot2" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 272.0
 offset_right = 528.0
+mouse_filter = 1
 
 [node name="Slot3" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 544.0
 offset_right = 800.0
+mouse_filter = 1
 
 [node name="Slot4" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 816.0
 offset_right = 1072.0
+mouse_filter = 1
 
 [node name="Slot5" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 0.0
 offset_top = 272.0
 offset_right = 256.0
 offset_bottom = 528.0
+mouse_filter = 1
 
 [node name="Slot6" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 272.0
 offset_top = 272.0
 offset_right = 528.0
 offset_bottom = 528.0
+mouse_filter = 1
 
 [node name="Slot7" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 544.0
 offset_top = 272.0
 offset_right = 800.0
 offset_bottom = 528.0
+mouse_filter = 1
 
 [node name="Slot8" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 816.0
 offset_top = 272.0
 offset_right = 1072.0
 offset_bottom = 528.0
+mouse_filter = 1
 
 [node name="Slot9" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 0.0
 offset_top = 544.0
 offset_right = 256.0
 offset_bottom = 800.0
+mouse_filter = 1
 
 [node name="Slot10" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 272.0
 offset_top = 544.0
 offset_right = 528.0
 offset_bottom = 800.0
+mouse_filter = 1
 
 [node name="Slot11" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 544.0
 offset_top = 544.0
 offset_right = 800.0
 offset_bottom = 800.0
+mouse_filter = 1
 
 [node name="Slot12" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 816.0
 offset_top = 544.0
 offset_right = 1072.0
 offset_bottom = 800.0
+mouse_filter = 1
 
 [node name="Slot13" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 0.0
 offset_top = 816.0
 offset_right = 256.0
 offset_bottom = 1072.0
+mouse_filter = 1
 
 [node name="Slot14" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 272.0
 offset_top = 816.0
 offset_right = 528.0
 offset_bottom = 1072.0
+mouse_filter = 1
 
 [node name="Slot15" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 544.0
 offset_top = 816.0
 offset_right = 800.0
 offset_bottom = 1072.0
+mouse_filter = 1
 
 [node name="Slot16" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 816.0
 offset_top = 816.0
 offset_right = 1072.0
 offset_bottom = 1072.0
+mouse_filter = 1
 
 [node name="Slot17" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 0.0
 offset_top = 1088.0
 offset_right = 256.0
 offset_bottom = 1344.0
+mouse_filter = 1
 
 [node name="Slot18" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 272.0
 offset_top = 1088.0
 offset_right = 528.0
 offset_bottom = 1344.0
+mouse_filter = 1
 
 [node name="Slot19" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 544.0
 offset_top = 1088.0
 offset_right = 800.0
 offset_bottom = 1344.0
+mouse_filter = 1
 
 [node name="Slot20" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 816.0
 offset_top = 1088.0
 offset_right = 1072.0
 offset_bottom = 1344.0
+mouse_filter = 1
 
 [node name="Slot21" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 0.0
 offset_top = 1360.0
 offset_right = 256.0
 offset_bottom = 1616.0
+mouse_filter = 1
 
 [node name="Slot22" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 272.0
 offset_top = 1360.0
 offset_right = 528.0
 offset_bottom = 1616.0
+mouse_filter = 1
 
 [node name="Slot23" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 544.0
 offset_top = 1360.0
 offset_right = 800.0
 offset_bottom = 1616.0
+mouse_filter = 1
 
 [node name="Slot24" parent="InventoryGrid" instance=ExtResource("12_qqhls")]
 offset_left = 816.0
 offset_top = 1360.0
 offset_right = 1072.0
 offset_bottom = 1616.0
+mouse_filter = 1
 
 [node name="EquipmentControl" type="Control" parent="."]
 custom_minimum_size = Vector2(704, 1616)
@@ -373,462 +412,157 @@ offset_left = -832.0
 offset_top = 380.0
 offset_right = -128.0
 offset_bottom = 1996.0
+mouse_filter = 1
 
 [node name="RHand1_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 0.0
-script = null
+placeholder_texture = ExtResource("14_b63hr")
+slot_type = 4
 
 [node name="RHand2_Slot" parent="EquipmentControl" instance=ExtResource("14_5ke3s")]
 offset_left = 240.0
 offset_top = 28.0
 offset_right = 436.0
 offset_bottom = 224.0
-script = null
+placeholder_texture = ExtResource("14_b63hr")
+slot_type = 5
 
 [node name="RHand3_Slot" parent="EquipmentControl" instance=ExtResource("14_5ke3s")]
 offset_left = 452.0
 offset_top = 28.0
 offset_right = 648.0
 offset_bottom = 224.0
-script = null
+placeholder_texture = ExtResource("14_b63hr")
+slot_type = 6
 
 [node name="LHand1_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 0.0
 offset_top = 240.0
 offset_bottom = 464.0
-script = null
+placeholder_texture = ExtResource("16_ch1aq")
+slot_type = 1
 
 [node name="LHand2_Slot" parent="EquipmentControl" instance=ExtResource("14_5ke3s")]
 offset_left = 240.0
 offset_top = 268.0
 offset_right = 436.0
 offset_bottom = 464.0
-script = null
+placeholder_texture = ExtResource("16_ch1aq")
+slot_type = 2
 
 [node name="LHand3_Slot" parent="EquipmentControl" instance=ExtResource("14_5ke3s")]
 offset_left = 452.0
 offset_top = 268.0
 offset_right = 648.0
 offset_bottom = 464.0
-script = null
+placeholder_texture = ExtResource("16_ch1aq")
+slot_type = 3
 
 [node name="Helm_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 0.0
 offset_top = 544.0
 offset_bottom = 768.0
-script = null
+placeholder_texture = ExtResource("17_k1sgv")
+slot_type = 7
 
 [node name="Armor_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 240.0
 offset_top = 544.0
 offset_right = 464.0
 offset_bottom = 768.0
-script = null
+placeholder_texture = ExtResource("18_8xw1s")
+slot_type = 8
 
 [node name="Boots_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 480.0
 offset_top = 544.0
 offset_right = 704.0
 offset_bottom = 768.0
-script = null
+placeholder_texture = ExtResource("19_xm2tn")
+slot_type = 9
 
 [node name="Amulet_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 0.0
 offset_top = 848.0
 offset_bottom = 1072.0
-script = null
+slot_type = 10
 
 [node name="Consumable1_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 0.0
 offset_top = 1152.0
 offset_bottom = 1376.0
-script = null
+placeholder_texture = ExtResource("20_3umgi")
+slot_type = 11
 
 [node name="Consumable2_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 240.0
 offset_top = 1152.0
 offset_right = 464.0
 offset_bottom = 1376.0
-script = null
+placeholder_texture = ExtResource("20_3umgi")
+slot_type = 12
 
 [node name="Consumable3_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 480.0
 offset_top = 1152.0
 offset_right = 704.0
 offset_bottom = 1376.0
-script = null
+placeholder_texture = ExtResource("20_3umgi")
+slot_type = 13
 
 [node name="Consumable4_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 0.0
 offset_top = 1392.0
 offset_bottom = 1616.0
-script = null
+placeholder_texture = ExtResource("20_3umgi")
+slot_type = 14
 
 [node name="Consumable5_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 240.0
 offset_top = 1392.0
 offset_right = 464.0
 offset_bottom = 1616.0
-script = null
+placeholder_texture = ExtResource("20_3umgi")
+slot_type = 15
 
 [node name="Consumable6_Slot" parent="EquipmentControl" instance=ExtResource("13_c7ba0")]
 offset_left = 480.0
 offset_top = 1392.0
 offset_right = 704.0
 offset_bottom = 1616.0
-script = null
+placeholder_texture = ExtResource("20_3umgi")
+slot_type = 16
 
-[node name="ItemInfoPanel" type="PanelContainer" parent="."]
-custom_minimum_size = Vector2(757, 400)
-offset_left = 1214.0
+[node name="ItemInfoPanel" parent="." instance=ExtResource("21_hhiou")]
+offset_left = 1208.0
 offset_top = 373.0
-offset_right = 1971.0
+offset_right = 1965.0
 offset_bottom = 1562.0
-theme_override_styles/panel = SubResource("StyleBoxTexture_5qufb")
 
-[node name="ItemInfoVBox" type="VBoxContainer" parent="ItemInfoPanel"]
-offset_left = 47.0
-offset_top = 29.0
-offset_right = 710.0
-offset_bottom = 1160.0
-
-[node name="CommonVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox"]
-offset_right = 663.0
-offset_bottom = 323.0
-
-[node name="NameLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox"]
-offset_right = 663.0
-offset_bottom = 70.0
-theme_override_font_sizes/font_size = 48
-text = "Item name"
-
-[node name="ItemTypeMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox"]
-offset_top = 74.0
-offset_right = 663.0
-offset_bottom = 120.0
-theme_override_constants/margin_top = -12
-
-[node name="ItemTypeLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/ItemTypeMargin"]
-offset_top = -12.0
-offset_right = 663.0
-offset_bottom = 46.0
-theme_override_colors/font_color = Color(1, 1, 1, 0.498039)
-theme_override_font_sizes/font_size = 40
-text = "Item type"
-uppercase = true
-
-[node name="PropertiesHBox" type="HBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox"]
-offset_top = 124.0
-offset_right = 663.0
-offset_bottom = 268.0
-theme_override_constants/separation = 32
-
-[node name="ValuesVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox"]
-offset_right = 82.0
-offset_bottom = 144.0
-theme_override_constants/separation = -16
-
-[node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox/ValuesVBox"]
-offset_right = 82.0
-offset_bottom = 80.0
-theme_override_font_sizes/font_size = 56
-text = "5-7"
-horizontal_alignment = 2
-
-[node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox/ValuesVBox"]
-offset_top = 64.0
-offset_right = 82.0
-offset_bottom = 144.0
-theme_override_font_sizes/font_size = 56
-text = "5"
-horizontal_alignment = 2
-
-[node name="TextsVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox"]
-offset_left = 114.0
-offset_right = 562.0
-offset_bottom = 144.0
-theme_override_constants/separation = -16
-
-[node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox/TextsVBox"]
-offset_right = 448.0
-offset_bottom = 80.0
-theme_override_font_sizes/font_size = 56
-text = "Defence"
-
-[node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/PropertiesHBox/TextsVBox"]
-offset_top = 64.0
-offset_right = 448.0
-offset_bottom = 144.0
-theme_override_font_sizes/font_size = 56
-text = "Piercing damage"
-
-[node name="LineMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox"]
-offset_top = 272.0
-offset_right = 663.0
-offset_bottom = 323.0
-theme_override_constants/margin_left = -47
-theme_override_constants/margin_top = 17
-theme_override_constants/margin_right = -47
-theme_override_constants/margin_bottom = 25
-
-[node name="LineNinePatchRect" type="NinePatchRect" parent="ItemInfoPanel/ItemInfoVBox/CommonVBox/LineMargin"]
-custom_minimum_size = Vector2(240, 9)
-offset_left = -47.0
-offset_top = 17.0
-offset_right = 710.0
-offset_bottom = 26.0
-texture = ExtResource("16_gqv8v")
-patch_margin_left = 120
-patch_margin_right = 120
-
-[node name="EffectsVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox"]
-offset_top = 327.0
-offset_right = 663.0
-offset_bottom = 720.0
-
-[node name="PropertiesHBox" type="HBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox"]
-offset_right = 663.0
-offset_bottom = 116.0
-theme_override_constants/separation = 32
-
-[node name="ValuesVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox"]
-offset_right = 59.0
-offset_bottom = 116.0
-theme_override_constants/separation = 0
-
-[node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox/ValuesVBox"]
-offset_right = 59.0
-offset_bottom = 58.0
-theme_override_font_sizes/font_size = 40
-text = "5-7"
-horizontal_alignment = 2
-
-[node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox/ValuesVBox"]
-offset_top = 58.0
-offset_right = 59.0
-offset_bottom = 116.0
-theme_override_font_sizes/font_size = 40
-text = "5"
-horizontal_alignment = 2
-
-[node name="TextsVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox"]
-offset_left = 91.0
-offset_right = 409.0
-offset_bottom = 116.0
-theme_override_constants/separation = 0
-
-[node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox/TextsVBox"]
-offset_right = 318.0
-offset_bottom = 58.0
-theme_override_font_sizes/font_size = 40
-text = "Defence"
-
-[node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/PropertiesHBox/TextsVBox"]
-offset_top = 58.0
-offset_right = 318.0
-offset_bottom = 116.0
-theme_override_font_sizes/font_size = 40
-text = "Piercing damage"
-
-[node name="RequiredsCaptionMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox"]
-offset_top = 120.0
-offset_right = 663.0
-offset_bottom = 218.0
-theme_override_constants/margin_top = 40
-
-[node name="RequiredsCaptionLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsCaptionMargin"]
-offset_top = 40.0
-offset_right = 663.0
-offset_bottom = 98.0
-theme_override_colors/font_color = Color(1, 1, 1, 0.498039)
-theme_override_font_sizes/font_size = 40
-text = "Requireds:"
-
-[node name="RequiredsHBox" type="HBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox"]
-offset_top = 222.0
-offset_right = 663.0
-offset_bottom = 338.0
-theme_override_constants/separation = 32
-
-[node name="ValuesVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox"]
-offset_right = 59.0
-offset_bottom = 116.0
-theme_override_constants/separation = 0
-
-[node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox/ValuesVBox"]
-offset_right = 59.0
-offset_bottom = 58.0
-theme_override_font_sizes/font_size = 40
-text = "5-7"
-horizontal_alignment = 2
-
-[node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox/ValuesVBox"]
-offset_top = 58.0
-offset_right = 59.0
-offset_bottom = 116.0
-theme_override_font_sizes/font_size = 40
-text = "5"
-horizontal_alignment = 2
-
-[node name="TextsVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox"]
-offset_left = 91.0
-offset_right = 409.0
-offset_bottom = 116.0
-theme_override_constants/separation = 0
-
-[node name="Label1" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox/TextsVBox"]
-offset_right = 318.0
-offset_bottom = 58.0
-theme_override_font_sizes/font_size = 40
-text = "Defence"
-
-[node name="Label2" type="Label" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/RequiredsHBox/TextsVBox"]
-offset_top = 58.0
-offset_right = 318.0
-offset_bottom = 116.0
-theme_override_font_sizes/font_size = 40
-text = "Piercing damage"
-
-[node name="LineMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox"]
-offset_top = 342.0
-offset_right = 663.0
-offset_bottom = 393.0
-theme_override_constants/margin_left = -47
-theme_override_constants/margin_top = 17
-theme_override_constants/margin_right = -47
-theme_override_constants/margin_bottom = 25
-
-[node name="LineNinePatchRect" type="NinePatchRect" parent="ItemInfoPanel/ItemInfoVBox/EffectsVBox/LineMargin"]
-custom_minimum_size = Vector2(240, 9)
-offset_left = -47.0
-offset_top = 17.0
-offset_right = 710.0
-offset_bottom = 26.0
-texture = ExtResource("16_gqv8v")
-patch_margin_left = 120
-patch_margin_right = 120
-
-[node name="DescriptionVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox"]
-offset_top = 724.0
-offset_right = 663.0
-offset_bottom = 1063.0
-
-[node name="DescriptionMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/DescriptionVBox"]
-offset_right = 663.0
-offset_bottom = 279.0
-theme_override_constants/margin_top = 14
-
-[node name="DescriptionLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/DescriptionVBox/DescriptionMargin"]
-offset_top = 14.0
-offset_right = 663.0
-offset_bottom = 279.0
-theme_override_colors/font_color = Color(0.811765, 0.807843, 0.803922, 1)
-theme_override_font_sizes/font_size = 36
-text = "It takes a lot of strength to hold it with one hand. These weapons were forged by the Black Lord himself.
-It contains a piece of the creator's soul."
-autowrap_mode = 2
-
-[node name="LineMargin" type="MarginContainer" parent="ItemInfoPanel/ItemInfoVBox/DescriptionVBox"]
-offset_top = 283.0
-offset_right = 663.0
-offset_bottom = 339.0
-theme_override_constants/margin_left = -47
-theme_override_constants/margin_top = 47
-theme_override_constants/margin_right = -47
-theme_override_constants/margin_bottom = 0
-
-[node name="LineNinePatchRect" type="NinePatchRect" parent="ItemInfoPanel/ItemInfoVBox/DescriptionVBox/LineMargin"]
-custom_minimum_size = Vector2(240, 9)
-offset_left = -47.0
-offset_top = 47.0
-offset_right = 710.0
-offset_bottom = 56.0
-texture = ExtResource("16_gqv8v")
-patch_margin_left = 120
-patch_margin_right = 120
-
-[node name="FooterVBox" type="VBoxContainer" parent="ItemInfoPanel/ItemInfoVBox"]
-offset_top = 1067.0
-offset_right = 663.0
-offset_bottom = 1131.0
-
-[node name="Control" type="Control" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox"]
-custom_minimum_size = Vector2(0, 64)
-offset_right = 663.0
-offset_bottom = 64.0
-
-[node name="WeightHBox" type="HBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control"]
-offset_right = 40.0
-offset_bottom = 40.0
-theme_override_constants/separation = 12
-
-[node name="WeightTextureRect" type="TextureRect" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/WeightHBox"]
-offset_right = 50.0
-offset_bottom = 70.0
-texture = ExtResource("17_icgdy")
-stretch_mode = 3
-
-[node name="WeightLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/WeightHBox"]
-offset_left = 62.0
-offset_right = 129.0
-offset_bottom = 70.0
-theme_override_font_sizes/font_size = 48
-text = "1.5"
-
-[node name="DurabilityHBox" type="HBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control"]
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -63.5
-offset_right = 63.5
-offset_bottom = 67.0
-theme_override_constants/separation = 12
-
-[node name="DurabilityTextureRect" type="TextureRect" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/DurabilityHBox"]
-offset_right = 42.0
-offset_bottom = 70.0
-texture = ExtResource("18_u4mpr")
-stretch_mode = 3
-
-[node name="DurabilityLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/DurabilityHBox"]
-offset_left = 54.0
-offset_right = 121.0
-offset_bottom = 70.0
-theme_override_font_sizes/font_size = 48
-text = "1.5"
-
-[node name="CostHBox" type="HBoxContainer" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control"]
+[node name="EquipInfoPanel" parent="." instance=ExtResource("21_hhiou")]
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -127.0
-offset_bottom = 67.0
-theme_override_constants/separation = 12
+offset_left = -1598.0
+offset_top = 373.0
+offset_right = -841.0
+offset_bottom = 1562.0
 
-[node name="CostLabel" type="Label" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/CostHBox"]
-offset_right = 67.0
-offset_bottom = 70.0
-theme_override_font_sizes/font_size = 48
-text = "1.5"
-
-[node name="CostTextureRect" type="TextureRect" parent="ItemInfoPanel/ItemInfoVBox/FooterVBox/Control/CostHBox"]
-offset_left = 79.0
-offset_right = 121.0
-offset_bottom = 70.0
-texture = ExtResource("19_epyyp")
-stretch_mode = 3
-
-[connection signal="mouse_entered" from="EquipmentControl/RHand1_Slot" to="EquipmentControl/RHand1_Slot" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="EquipmentControl/RHand2_Slot" to="EquipmentControl/RHand2_Slot" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="EquipmentControl/RHand3_Slot" to="EquipmentControl/RHand3_Slot" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="EquipmentControl/LHand1_Slot" to="EquipmentControl/LHand1_Slot" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="EquipmentControl/LHand2_Slot" to="EquipmentControl/LHand2_Slot" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="EquipmentControl/LHand3_Slot" to="EquipmentControl/LHand3_Slot" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="EquipmentControl/Helm_Slot" to="EquipmentControl/Helm_Slot" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="EquipmentControl/Armor_Slot" to="EquipmentControl/Armor_Slot" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="EquipmentControl/Boots_Slot" to="EquipmentControl/Boots_Slot" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="EquipmentControl/Amulet_Slot" to="EquipmentControl/Amulet_Slot" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="EquipmentControl/Consumable1_Slot" to="EquipmentControl/Consumable1_Slot" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="EquipmentControl/Consumable2_Slot" to="EquipmentControl/Consumable2_Slot" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="EquipmentControl/Consumable3_Slot" to="EquipmentControl/Consumable3_Slot" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="EquipmentControl/Consumable4_Slot" to="EquipmentControl/Consumable4_Slot" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="EquipmentControl/Consumable5_Slot" to="EquipmentControl/Consumable5_Slot" method="_on_mouse_entered"]
-[connection signal="mouse_entered" from="EquipmentControl/Consumable6_Slot" to="EquipmentControl/Consumable6_Slot" method="_on_mouse_entered"]
+[node name="DragItemTextureRect" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(220, 220)
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -110.0
+offset_top = -110.0
+offset_right = 110.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(110, 110)
+mouse_filter = 2
+texture = ExtResource("20_ojgqe")
+ignore_texture_size = true
+stretch_mode = 5
+metadata/_edit_layout_mode = 1

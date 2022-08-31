@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cx1imxu8t87vn"]
+
+[ext_resource type="Texture2D" uid="uid://dcb3c21l1vrv1" path="res://Inventory/Assets/UI/RavenmorelIconPack/coin.png" id="1_pp1qb"]
+[ext_resource type="Script" path="res://Inventory/Scripts/Items/OtherItem.gd" id="2_44mdw"]
+
+[resource]
+script = ExtResource("2_44mdw")
+item_name = "Coins"
+icon = ExtResource("1_pp1qb")
+description = "You can buy anything with these gold coins."
+effects = null
+weight = 0.0
+base_cost = 1.0
+max_count = 999999
+max_stored_count = 999999

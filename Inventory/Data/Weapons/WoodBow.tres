@@ -1,0 +1,28 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://bnbjxrcep11mw"]
+
+[ext_resource type="Texture2D" uid="uid://c8g3jus0esoi0" path="res://Inventory/Assets/UI/RavenmorelIconPack/bow.png" id="1_nfggo"]
+[ext_resource type="Script" path="res://Inventory/Scripts/Items/WeaponItem.gd" id="2_bnnnt"]
+
+[resource]
+script = ExtResource("2_bnnnt")
+item_name = "Wood bow"
+icon = ExtResource("1_nfggo")
+description = "This bow is made from a young willow tree."
+effects = null
+weight = 6.0
+base_cost = 0.0
+max_durability = 1.0
+level = 1
+weapon_type = 3
+damage_type = 1
+stamina_cost = 1.0
+physical_damage = 7.0
+magic_damage = null
+fire_damage = null
+ice_damage = null
+str_scaling = null
+dex_scaling = null
+int_scaling = null
+str_required = 0
+dex_required = 7
+int_required = null

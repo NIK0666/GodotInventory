@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cxvtcibvh7tuh"]
+
+[ext_resource type="Script" path="res://Inventory/Scripts/Items/BootsItem.gd" id="1_7jm2b"]
+[ext_resource type="Texture2D" uid="uid://bfm74kkpmsa2j" path="res://Inventory/Assets/UI/Items/ItemBoots.png" id="1_mjhfm"]
+
+[resource]
+script = ExtResource("1_7jm2b")
+item_name = "Artorias boots"
+icon = ExtResource("1_mjhfm")
+description = "These boots were once worn by the great warrior Artorias"
+effects = null
+weight = 3.0
+base_cost = 0.0
+max_durability = 1.0
+level = 1
+physical_defence = 6.0
+magic_defence = 1.0
+fire_defence = 1.0
+ice_defence = 1.0

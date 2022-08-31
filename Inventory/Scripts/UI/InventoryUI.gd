@@ -1,8 +1,16 @@
 extends Control
 
-@onready var inv: InventoryComponent = get_node("Inventory")
-
 func _ready():
-	inv.AddItem("res://Inventory/Data/Consumables/Apple.tres", 1)
-	inv.AddItem("res://Inventory/Data/Consumables/Apple.tres", 1)
+	pass
 
+
+func _process(delta: float)->void:
+	pass
+
+
+func _input(event: InputEvent):
+	pass
+
+
+func _unhandled_input(event):
+	pass

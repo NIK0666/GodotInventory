@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b727jcmkeasv0"]
+
+[ext_resource type="Texture2D" uid="uid://ibkh3b13moqn" path="res://Inventory/Assets/UI/RavenmorelIconPack/tome.png" id="1_tf6iu"]
+[ext_resource type="Script" path="res://Inventory/Scripts/Items/NoteItem.gd" id="2_obu2v"]
+
+[resource]
+script = ExtResource("2_obu2v")
+item_name = "Cook's book"
+icon = ExtResource("1_tf6iu")
+description = "In this book, the chef has collected many culinary recipes."
+effects = null
+weight = 0.0
+base_cost = 20.0
+pages = null

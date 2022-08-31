@@ -9,15 +9,45 @@
 config_version=5
 
 _global_script_classes=[{
-"base": "Item",
+"base": "BaseUndurableItem",
+"class": &"ArmorItem",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/Items/ArmorItem.gd"
+}, {
+"base": "BaseStackableItem",
 "class": &"BaseConsumableItem",
 "language": &"GDScript",
 "path": "res://Inventory/Scripts/Items/BaseConsumableItem.gd"
 }, {
-"base": "Node",
-"class": &"EquipmentSlotInfo",
+"base": "Panel",
+"class": &"BaseSlotUI",
 "language": &"GDScript",
-"path": "res://Inventory/Scripts/Data/EquipmentSlotInfo.gd"
+"path": "res://Inventory/Scripts/UI/BaseSlotUI.gd"
+}, {
+"base": "Item",
+"class": &"BaseStackableItem",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/Items/BaseStackableItem.gd"
+}, {
+"base": "Item",
+"class": &"BaseUndurableItem",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/Items/BaseUndurableItem.gd"
+}, {
+"base": "ArmorItem",
+"class": &"BootsItem",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/Items/BootsItem.gd"
+}, {
+"base": "BaseSlotUI",
+"class": &"EquipSlotUI",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/UI/EquipSlotUI.gd"
+}, {
+"base": "ArmorItem",
+"class": &"HelmItem",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/Items/HelmItem.gd"
 }, {
 "base": "Node",
 "class": &"InventoryComponent",
@@ -25,38 +55,68 @@ _global_script_classes=[{
 "path": "res://Inventory/Scripts/InventoryComponent.gd"
 }, {
 "base": "Object",
-"class": &"InventoryItemSlot",
+"class": &"InventoryItemSlotInfo",
 "language": &"GDScript",
-"path": "res://Inventory/Scripts/Data/InventoryItemSlot.gd"
-}, {
-"base": "Panel",
-"class": &"InventoryItemSlotUI",
-"language": &"GDScript",
-"path": "res://Inventory/Scripts/UI/InventoryItemSlotUI.gd"
+"path": "res://Inventory/Scripts/Data/InventoryItemSlotInfo.gd"
 }, {
 "base": "Resource",
 "class": &"Item",
 "language": &"GDScript",
 "path": "res://Inventory/Scripts/Items/Item.gd"
 }, {
+"base": "PanelContainer",
+"class": &"ItemInfoPanel",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/UI/ItemInfoPanelUI.gd"
+}, {
+"base": "Object",
+"class": &"ItemProperty",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/Data/ItemProperty.gd"
+}, {
 "base": "Node",
 "class": &"ItemSlotInfo",
 "language": &"GDScript",
 "path": "res://Inventory/Scripts/Data/ItemSlotInfo.gd"
 }, {
+"base": "BaseSlotUI",
+"class": &"ItemSlotUI",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/UI/ItemSlotUI.gd"
+}, {
 "base": "Item",
+"class": &"NoteItem",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/Items/NoteItem.gd"
+}, {
+"base": "BaseStackableItem",
+"class": &"OtherItem",
+"language": &"GDScript",
+"path": "res://Inventory/Scripts/Items/OtherItem.gd"
+}, {
+"base": "BaseUndurableItem",
 "class": &"WeaponItem",
 "language": &"GDScript",
 "path": "res://Inventory/Scripts/Items/WeaponItem.gd"
 }]
 _global_script_class_icons={
+"ArmorItem": "",
 "BaseConsumableItem": "",
-"EquipmentSlotInfo": "",
+"BaseSlotUI": "",
+"BaseStackableItem": "",
+"BaseUndurableItem": "",
+"BootsItem": "",
+"EquipSlotUI": "",
+"HelmItem": "",
 "InventoryComponent": "",
-"InventoryItemSlot": "",
-"InventoryItemSlotUI": "",
+"InventoryItemSlotInfo": "",
 "Item": "",
+"ItemInfoPanel": "",
+"ItemProperty": "",
 "ItemSlotInfo": "",
+"ItemSlotUI": "",
+"NoteItem": "",
+"OtherItem": "",
 "WeaponItem": ""
 }
 
@@ -82,14 +142,19 @@ window/stretch/aspect="expand"
 
 [input]
 
-ScrollUp={
+UIScrollUp={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":4,"pressed":false,"double_click":false,"script":null)
 ]
 }
-ScrollDown={
+UIScrollDown={
 "deadzone": 0.5,
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":5,"pressed":false,"double_click":false,"script":null)
+]
+}
+UIItemInteract={
+"deadzone": 0.5,
+"events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"store_command":true,"alt_pressed":false,"shift_pressed":false,"meta_pressed":false,"command_pressed":false,"button_mask":0,"position":Vector2(0, 0),"global_position":Vector2(0, 0),"factor":1.0,"button_index":1,"pressed":false,"double_click":false,"script":null)
 ]
 }
 

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dsln5aen00k7d"]
+
+[ext_resource type="Script" path="res://Inventory/Scripts/Items/NoteItem.gd" id="1_0b7dn"]
+[ext_resource type="Texture2D" uid="uid://cmqei7xn0cb1s" path="res://Inventory/Assets/UI/RavenmorelIconPack/envelope.png" id="1_pbem4"]
+
+[resource]
+script = ExtResource("1_0b7dn")
+item_name = "Letter from grandfather"
+icon = ExtResource("1_pbem4")
+description = "Grandfather wrote a letter to grandmother. And he passed it on to his grandson, that is, to me. So that I give this letter to his wife, that is, my grandmother."
+effects = null
+weight = 0.0
+base_cost = 0.0
+pages = null

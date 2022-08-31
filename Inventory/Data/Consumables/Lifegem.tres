@@ -6,8 +6,10 @@
 [resource]
 script = ExtResource("1_it2gl")
 item_name = "Life gem"
-weight = 0.5
 icon = ExtResource("1_rbr1o")
-description = ""
+description = "If you apply this stone to the wound, then it will gradually heal."
+effects = null
+weight = 0.5
+base_cost = 0.0
 max_count = 10
 max_stored_count = 600

@@ -6,8 +6,10 @@
 [resource]
 script = ExtResource("2_4jrlu")
 item_name = "Lamp"
-weight = 0.2
 icon = ExtResource("1_5heo2")
-description = ""
+description = "A typical kerosene lamp. With it, you can see the road in the dark."
+effects = null
+weight = 0.2
+base_cost = 0.0
 max_count = 10
 max_stored_count = 600

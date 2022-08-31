@@ -1,0 +1,28 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://cn1hqf360jgqf"]
+
+[ext_resource type="Texture2D" uid="uid://cr062osus5q3e" path="res://Inventory/Assets/UI/RavenmorelIconPack/dagger.png" id="1_xfkf2"]
+[ext_resource type="Script" path="res://Inventory/Scripts/Items/WeaponItem.gd" id="2_ufj3l"]
+
+[resource]
+script = ExtResource("2_ufj3l")
+item_name = "Dagger"
+icon = ExtResource("1_xfkf2")
+description = "This dagger can deliver fast attacks. Due to the short length, the damage radius is too small."
+effects = [1]
+weight = 4.0
+base_cost = 0.0
+max_durability = 1.0
+level = 1
+weapon_type = 0
+damage_type = 1
+stamina_cost = 1.0
+physical_damage = 6.0
+magic_damage = null
+fire_damage = null
+ice_damage = null
+str_scaling = 3
+dex_scaling = null
+int_scaling = null
+str_required = null
+dex_required = 3
+int_required = null

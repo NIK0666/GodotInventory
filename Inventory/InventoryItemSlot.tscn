@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://c5xaeq38oorc2"]
+[gd_scene load_steps=8 format=3 uid="uid://cuq64d6j7da2k"]
 
-[ext_resource type="Texture2D" uid="uid://ckruyh5em8dc" path="res://Inventory/Assets/UI/Inventory.sprites/CellBackground.tres" id="1_ecg2d"]
-[ext_resource type="Script" path="res://Inventory/Scripts/UI/InventoryItemSlotUI.gd" id="2_4gt5f"]
+[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/CellBackground.tres" id="1_ecg2d"]
+[ext_resource type="Script" path="res://Inventory/Scripts/UI/ItemSlotUI.gd" id="2_4gt5f"]
 [ext_resource type="Texture2D" uid="uid://bu6g6r2jph5b8" path="res://Inventory/Assets/UI/Items/ItemArmor.png" id="2_ix16s"]
 [ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/IsEquipped.tres" id="3_e80pf"]
 [ext_resource type="Material" uid="uid://cjbwubn5b722k" path="res://Inventory/Assets/Materials/M_Selector.tres" id="4_2l30q"]

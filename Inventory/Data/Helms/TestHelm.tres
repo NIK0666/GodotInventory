@@ -1,0 +1,19 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://d3wnihy76pa0v"]
+
+[ext_resource type="Texture2D" uid="uid://ctoa42f6ebd0x" path="res://Inventory/Assets/UI/Items/ItemHelm.png" id="1_2ycnr"]
+[ext_resource type="Script" path="res://Inventory/Scripts/Items/HelmItem.gd" id="1_u3u8p"]
+
+[resource]
+script = ExtResource("1_u3u8p")
+item_name = "Artorias helm"
+icon = ExtResource("1_2ycnr")
+description = "This helmet was once worn by the great warrior Artorias."
+effects = []
+weight = 4.0
+base_cost = 0.0
+max_durability = 1.0
+level = 1
+physical_defence = 8.0
+magic_defence = null
+fire_defence = 2.0
+ice_defence = null

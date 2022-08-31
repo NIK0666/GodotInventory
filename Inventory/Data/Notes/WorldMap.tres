@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://b0iosguwsa7of"]
+
+[ext_resource type="Script" path="res://Inventory/Scripts/Items/NoteItem.gd" id="1_0b7dn"]
+[ext_resource type="Texture2D" uid="uid://b6m448v56e2c5" path="res://Inventory/Assets/UI/RavenmorelIconPack/map.png" id="1_ul5p1"]
+
+[resource]
+script = ExtResource("1_0b7dn")
+item_name = "World map"
+icon = ExtResource("1_ul5p1")
+description = "On this sheet of paper the cartographer drew the whole world."
+effects = null
+weight = 0.0
+base_cost = 0.0
+pages = null

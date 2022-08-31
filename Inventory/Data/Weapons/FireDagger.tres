@@ -1,0 +1,28 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://dgaontcqfactl"]
+
+[ext_resource type="Texture2D" uid="uid://blyl6ntexs2ph" path="res://Inventory/Assets/UI/RavenmorelIconPack/upg_dagger.png" id="1_rjwqs"]
+[ext_resource type="Script" path="res://Inventory/Scripts/Items/WeaponItem.gd" id="2_ufj3l"]
+
+[resource]
+script = ExtResource("2_ufj3l")
+item_name = "Fire dagger"
+icon = ExtResource("1_rjwqs")
+description = "This dagger can deliver fast attacks. Burns and can ignite the enemy. Due to the short length, the damage radius is too small."
+effects = [1]
+weight = 4.0
+base_cost = 0.0
+max_durability = 1.0
+level = 1
+weapon_type = 0
+damage_type = 1
+stamina_cost = 1.0
+physical_damage = 5.0
+magic_damage = null
+fire_damage = 4.0
+ice_damage = null
+str_scaling = 2
+dex_scaling = null
+int_scaling = 3
+str_required = null
+dex_required = 3
+int_required = 4

@@ -1,9 +1,9 @@
 class_name BaseConsumableItem
-extends Item
+extends BaseStackableItem
 
 
-@export var max_count: int = 1
-@export var max_stored_count: int = 600
+func get_item_type()->int: #Enums.EItemType:
+	return Enums.EItemType.CONSUMABLE
 
-func is_consumable()->bool:
-	return true
+func get_type_text()->String:
+		return "Consumable"

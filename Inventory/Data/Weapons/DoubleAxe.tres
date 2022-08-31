@@ -1,0 +1,28 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://c1nit8mjpgkjy"]
+
+[ext_resource type="Texture2D" uid="uid://0agjk4j3qxid" path="res://Inventory/Assets/UI/RavenmorelIconPack/axeDouble.png" id="1_0t6qy"]
+[ext_resource type="Script" path="res://Inventory/Scripts/Items/WeaponItem.gd" id="2_ufj3l"]
+
+[resource]
+script = ExtResource("2_ufj3l")
+item_name = "Double axe"
+icon = ExtResource("1_0t6qy")
+description = "Cuts down trees and heads of enemies."
+effects = [1]
+weight = 4.0
+base_cost = 0.0
+max_durability = 1.0
+level = 1
+weapon_type = 1
+damage_type = 3
+stamina_cost = 1.0
+physical_damage = 15.0
+magic_damage = null
+fire_damage = null
+ice_damage = null
+str_scaling = 3
+dex_scaling = null
+int_scaling = null
+str_required = 8
+dex_required = 0
+int_required = null

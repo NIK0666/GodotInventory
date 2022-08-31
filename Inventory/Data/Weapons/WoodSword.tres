@@ -1,0 +1,28 @@
+[gd_resource type="Resource" load_steps=3 format=3 uid="uid://da8kbnn2jo0i7"]
+
+[ext_resource type="Texture2D" uid="uid://bvglupynea1up" path="res://Inventory/Assets/UI/RavenmorelIconPack/woodSword.png" id="1_eb36b"]
+[ext_resource type="Script" path="res://Inventory/Scripts/Items/WeaponItem.gd" id="2_bnnnt"]
+
+[resource]
+script = ExtResource("2_bnnnt")
+item_name = "Wood sword"
+icon = ExtResource("1_eb36b")
+description = "This sword was used as an inventory for theatrical performances."
+effects = null
+weight = 6.0
+durability = 1.0
+cost = 0.0
+level = 1
+weapon_type = 0
+damage_type = 1
+stamina_cost = 1.0
+physical_damage = 4.0
+magic_damage = null
+fire_damage = null
+ice_damage = null
+str_scaling = null
+dex_scaling = null
+int_scaling = null
+str_required = 3
+dex_required = null
+int_required = null

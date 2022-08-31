@@ -1,0 +1,507 @@
+[gd_scene load_steps=11 format=3 uid="uid://dx04jk0a3pl5l"]
+
+[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/ItemInfoPanel.tres" id="1_7y24w"]
+[ext_resource type="Script" path="res://Inventory/Scripts/UI/ItemInfoPanelUI.gd" id="2_rgjvl"]
+[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/Line.tres" id="2_w422j"]
+[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/WeightIcon.tres" id="3_vsuoa"]
+[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/HammerIcon.tres" id="4_gbm8u"]
+[ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/CoinIcon.tres" id="5_urldx"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5qufb"]
+texture = ExtResource("1_7y24w")
+margin_left = 47.0
+margin_top = 29.0
+margin_right = 47.0
+margin_bottom = 29.0
+region_rect = Rect2(0, 0, 771, 1097)
+
+[sub_resource type="Animation" id="Animation_asvem"]
+resource_name = "HideAnim"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kr4he"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wl2r8"]
+_data = {
+"HideAnim": SubResource("Animation_asvem"),
+"RESET": SubResource("Animation_kr4he")
+}
+
+[node name="ItemInfoPanel" type="PanelContainer"]
+custom_minimum_size = Vector2(757, 100)
+offset_right = 757.0
+offset_bottom = 1189.0
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_5qufb")
+script = ExtResource("2_rgjvl")
+
+[node name="ItemInfoVBox" type="VBoxContainer" parent="."]
+offset_left = 47.0
+offset_top = 29.0
+offset_right = 710.0
+offset_bottom = 1490.0
+
+[node name="CommonVBox" type="VBoxContainer" parent="ItemInfoVBox"]
+offset_right = 663.0
+offset_bottom = 475.0
+
+[node name="NameLabel" type="Label" parent="ItemInfoVBox/CommonVBox"]
+offset_right = 663.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 48
+text = "Item name"
+
+[node name="ItemTypeMargin" type="MarginContainer" parent="ItemInfoVBox/CommonVBox"]
+offset_top = 74.0
+offset_right = 663.0
+offset_bottom = 120.0
+theme_override_constants/margin_top = -12
+
+[node name="ItemTypeLabel" type="Label" parent="ItemInfoVBox/CommonVBox/ItemTypeMargin"]
+offset_top = -12.0
+offset_right = 663.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.498039)
+theme_override_font_sizes/font_size = 40
+text = "Item type"
+uppercase = true
+
+[node name="PropertiesHBox" type="HBoxContainer" parent="ItemInfoVBox/CommonVBox"]
+offset_top = 124.0
+offset_right = 663.0
+offset_bottom = 420.0
+theme_override_constants/separation = 32
+
+[node name="ValuesVBox" type="VBoxContainer" parent="ItemInfoVBox/CommonVBox/PropertiesHBox"]
+offset_right = 82.0
+offset_bottom = 296.0
+theme_override_constants/separation = -8
+
+[node name="Label1" type="Label" parent="ItemInfoVBox/CommonVBox/PropertiesHBox/ValuesVBox"]
+offset_right = 82.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 56
+text = "5-7"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="ItemInfoVBox/CommonVBox/PropertiesHBox/ValuesVBox"]
+offset_top = 72.0
+offset_right = 82.0
+offset_bottom = 152.0
+theme_override_font_sizes/font_size = 56
+text = "5"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="ItemInfoVBox/CommonVBox/PropertiesHBox/ValuesVBox"]
+offset_top = 144.0
+offset_right = 82.0
+offset_bottom = 224.0
+theme_override_font_sizes/font_size = 56
+text = "5"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="ItemInfoVBox/CommonVBox/PropertiesHBox/ValuesVBox"]
+offset_top = 216.0
+offset_right = 82.0
+offset_bottom = 296.0
+theme_override_font_sizes/font_size = 56
+text = "5"
+horizontal_alignment = 2
+
+[node name="TextsVBox" type="VBoxContainer" parent="ItemInfoVBox/CommonVBox/PropertiesHBox"]
+offset_left = 114.0
+offset_right = 562.0
+offset_bottom = 296.0
+theme_override_constants/separation = -8
+
+[node name="Label1" type="Label" parent="ItemInfoVBox/CommonVBox/PropertiesHBox/TextsVBox"]
+offset_right = 448.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 56
+text = "Defence"
+
+[node name="Label2" type="Label" parent="ItemInfoVBox/CommonVBox/PropertiesHBox/TextsVBox"]
+offset_top = 72.0
+offset_right = 448.0
+offset_bottom = 152.0
+theme_override_font_sizes/font_size = 56
+text = "Piercing damage"
+
+[node name="Label3" type="Label" parent="ItemInfoVBox/CommonVBox/PropertiesHBox/TextsVBox"]
+offset_top = 144.0
+offset_right = 448.0
+offset_bottom = 224.0
+theme_override_font_sizes/font_size = 56
+text = "Piercing damage"
+
+[node name="Label4" type="Label" parent="ItemInfoVBox/CommonVBox/PropertiesHBox/TextsVBox"]
+offset_top = 216.0
+offset_right = 448.0
+offset_bottom = 296.0
+theme_override_font_sizes/font_size = 56
+text = "Piercing damage"
+
+[node name="LineMargin" type="MarginContainer" parent="ItemInfoVBox/CommonVBox"]
+offset_top = 424.0
+offset_right = 663.0
+offset_bottom = 475.0
+theme_override_constants/margin_left = -47
+theme_override_constants/margin_top = 17
+theme_override_constants/margin_right = -47
+theme_override_constants/margin_bottom = 25
+
+[node name="LineNinePatchRect" type="NinePatchRect" parent="ItemInfoVBox/CommonVBox/LineMargin"]
+custom_minimum_size = Vector2(240, 9)
+offset_left = -47.0
+offset_top = 17.0
+offset_right = 710.0
+offset_bottom = 26.0
+texture = ExtResource("2_w422j")
+patch_margin_left = 120
+patch_margin_right = 120
+
+[node name="EffectsAndRequiredsVBox" type="VBoxContainer" parent="ItemInfoVBox"]
+offset_top = 479.0
+offset_right = 663.0
+offset_bottom = 1050.0
+
+[node name="PropertiesHBox" type="HBoxContainer" parent="ItemInfoVBox/EffectsAndRequiredsVBox"]
+offset_right = 663.0
+offset_bottom = 232.0
+theme_override_constants/separation = 32
+
+[node name="ValuesVBox" type="VBoxContainer" parent="ItemInfoVBox/EffectsAndRequiredsVBox/PropertiesHBox"]
+offset_right = 59.0
+offset_bottom = 232.0
+theme_override_constants/separation = 0
+
+[node name="Label1" type="Label" parent="ItemInfoVBox/EffectsAndRequiredsVBox/PropertiesHBox/ValuesVBox"]
+offset_right = 59.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 40
+text = "5-7"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="ItemInfoVBox/EffectsAndRequiredsVBox/PropertiesHBox/ValuesVBox"]
+offset_top = 58.0
+offset_right = 59.0
+offset_bottom = 116.0
+theme_override_font_sizes/font_size = 40
+text = "5"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="ItemInfoVBox/EffectsAndRequiredsVBox/PropertiesHBox/ValuesVBox"]
+offset_top = 116.0
+offset_right = 59.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 40
+text = "5"
+horizontal_alignment = 2
+
+[node name="Label4" type="Label" parent="ItemInfoVBox/EffectsAndRequiredsVBox/PropertiesHBox/ValuesVBox"]
+offset_top = 174.0
+offset_right = 59.0
+offset_bottom = 232.0
+theme_override_font_sizes/font_size = 40
+text = "5"
+horizontal_alignment = 2
+
+[node name="TextsVBox" type="VBoxContainer" parent="ItemInfoVBox/EffectsAndRequiredsVBox/PropertiesHBox"]
+offset_left = 91.0
+offset_right = 409.0
+offset_bottom = 232.0
+theme_override_constants/separation = 0
+
+[node name="Label1" type="Label" parent="ItemInfoVBox/EffectsAndRequiredsVBox/PropertiesHBox/TextsVBox"]
+offset_right = 318.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 40
+text = "Defence"
+
+[node name="Label2" type="Label" parent="ItemInfoVBox/EffectsAndRequiredsVBox/PropertiesHBox/TextsVBox"]
+offset_top = 58.0
+offset_right = 318.0
+offset_bottom = 116.0
+theme_override_font_sizes/font_size = 40
+text = "Piercing damage"
+
+[node name="Label3" type="Label" parent="ItemInfoVBox/EffectsAndRequiredsVBox/PropertiesHBox/TextsVBox"]
+offset_top = 116.0
+offset_right = 318.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 40
+text = "Piercing damage"
+
+[node name="Label4" type="Label" parent="ItemInfoVBox/EffectsAndRequiredsVBox/PropertiesHBox/TextsVBox"]
+offset_top = 174.0
+offset_right = 318.0
+offset_bottom = 232.0
+theme_override_font_sizes/font_size = 40
+text = "Piercing damage"
+
+[node name="EffectsAndRequiredSeparator" type="MarginContainer" parent="ItemInfoVBox/EffectsAndRequiredsVBox"]
+offset_top = 236.0
+offset_right = 663.0
+offset_bottom = 276.0
+theme_override_constants/margin_top = 40
+
+[node name="RequiredsVBox" type="VBoxContainer" parent="ItemInfoVBox/EffectsAndRequiredsVBox"]
+offset_top = 280.0
+offset_right = 663.0
+offset_bottom = 516.0
+
+[node name="RequiredsCaptionLabel" type="Label" parent="ItemInfoVBox/EffectsAndRequiredsVBox/RequiredsVBox"]
+offset_right = 663.0
+offset_bottom = 58.0
+theme_override_colors/font_color = Color(1, 1, 1, 0.498039)
+theme_override_font_sizes/font_size = 40
+text = "Requireds:"
+
+[node name="RequiredsHBox" type="HBoxContainer" parent="ItemInfoVBox/EffectsAndRequiredsVBox/RequiredsVBox"]
+offset_top = 62.0
+offset_right = 663.0
+offset_bottom = 236.0
+theme_override_constants/separation = 32
+
+[node name="ValuesVBox" type="VBoxContainer" parent="ItemInfoVBox/EffectsAndRequiredsVBox/RequiredsVBox/RequiredsHBox"]
+offset_right = 59.0
+offset_bottom = 174.0
+theme_override_constants/separation = 0
+
+[node name="Label1" type="Label" parent="ItemInfoVBox/EffectsAndRequiredsVBox/RequiredsVBox/RequiredsHBox/ValuesVBox"]
+offset_right = 59.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 40
+text = "5-7"
+horizontal_alignment = 2
+
+[node name="Label2" type="Label" parent="ItemInfoVBox/EffectsAndRequiredsVBox/RequiredsVBox/RequiredsHBox/ValuesVBox"]
+offset_top = 58.0
+offset_right = 59.0
+offset_bottom = 116.0
+theme_override_font_sizes/font_size = 40
+text = "5"
+horizontal_alignment = 2
+
+[node name="Label3" type="Label" parent="ItemInfoVBox/EffectsAndRequiredsVBox/RequiredsVBox/RequiredsHBox/ValuesVBox"]
+offset_top = 116.0
+offset_right = 59.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 40
+text = "5"
+horizontal_alignment = 2
+
+[node name="TextsVBox" type="VBoxContainer" parent="ItemInfoVBox/EffectsAndRequiredsVBox/RequiredsVBox/RequiredsHBox"]
+offset_left = 91.0
+offset_right = 409.0
+offset_bottom = 174.0
+theme_override_constants/separation = 0
+
+[node name="Label1" type="Label" parent="ItemInfoVBox/EffectsAndRequiredsVBox/RequiredsVBox/RequiredsHBox/TextsVBox"]
+offset_right = 318.0
+offset_bottom = 58.0
+theme_override_font_sizes/font_size = 40
+text = "Defence"
+
+[node name="Label2" type="Label" parent="ItemInfoVBox/EffectsAndRequiredsVBox/RequiredsVBox/RequiredsHBox/TextsVBox"]
+offset_top = 58.0
+offset_right = 318.0
+offset_bottom = 116.0
+theme_override_font_sizes/font_size = 40
+text = "Piercing damage"
+
+[node name="Label3" type="Label" parent="ItemInfoVBox/EffectsAndRequiredsVBox/RequiredsVBox/RequiredsHBox/TextsVBox"]
+offset_top = 116.0
+offset_right = 318.0
+offset_bottom = 174.0
+theme_override_font_sizes/font_size = 40
+text = "Piercing damage"
+
+[node name="LineMargin" type="MarginContainer" parent="ItemInfoVBox/EffectsAndRequiredsVBox"]
+offset_top = 520.0
+offset_right = 663.0
+offset_bottom = 571.0
+theme_override_constants/margin_left = -47
+theme_override_constants/margin_top = 17
+theme_override_constants/margin_right = -47
+theme_override_constants/margin_bottom = 25
+
+[node name="LineNinePatchRect" type="NinePatchRect" parent="ItemInfoVBox/EffectsAndRequiredsVBox/LineMargin"]
+custom_minimum_size = Vector2(240, 9)
+offset_left = -47.0
+offset_top = 17.0
+offset_right = 710.0
+offset_bottom = 26.0
+texture = ExtResource("2_w422j")
+patch_margin_left = 120
+patch_margin_right = 120
+
+[node name="DescriptionVBox" type="VBoxContainer" parent="ItemInfoVBox"]
+offset_top = 1054.0
+offset_right = 663.0
+offset_bottom = 1333.0
+
+[node name="DescriptionMargin" type="MarginContainer" parent="ItemInfoVBox/DescriptionVBox"]
+offset_right = 663.0
+offset_bottom = 279.0
+theme_override_constants/margin_top = 14
+
+[node name="DescriptionLabel" type="Label" parent="ItemInfoVBox/DescriptionVBox/DescriptionMargin"]
+offset_top = 14.0
+offset_right = 663.0
+offset_bottom = 279.0
+theme_override_colors/font_color = Color(0.811765, 0.807843, 0.803922, 1)
+theme_override_font_sizes/font_size = 36
+text = "It takes a lot of strength to hold it with one hand. These weapons were forged by the Black Lord himself.
+It contains a piece of the creator's soul."
+autowrap_mode = 2
+
+[node name="FooterVBox" type="VBoxContainer" parent="ItemInfoVBox"]
+offset_top = 1337.0
+offset_right = 663.0
+offset_bottom = 1461.0
+
+[node name="LineMargin" type="MarginContainer" parent="ItemInfoVBox/FooterVBox"]
+offset_right = 663.0
+offset_bottom = 56.0
+theme_override_constants/margin_left = -47
+theme_override_constants/margin_top = 47
+theme_override_constants/margin_right = -47
+theme_override_constants/margin_bottom = 0
+
+[node name="LineNinePatchRect" type="NinePatchRect" parent="ItemInfoVBox/FooterVBox/LineMargin"]
+custom_minimum_size = Vector2(240, 9)
+offset_left = -47.0
+offset_top = 47.0
+offset_right = 710.0
+offset_bottom = 56.0
+texture = ExtResource("2_w422j")
+patch_margin_left = 120
+patch_margin_right = 120
+
+[node name="Control" type="Control" parent="ItemInfoVBox/FooterVBox"]
+custom_minimum_size = Vector2(0, 64)
+offset_top = 60.0
+offset_right = 663.0
+offset_bottom = 124.0
+
+[node name="WeightHBox" type="HBoxContainer" parent="ItemInfoVBox/FooterVBox/Control"]
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 12
+
+[node name="WeightTextureRect" type="TextureRect" parent="ItemInfoVBox/FooterVBox/Control/WeightHBox"]
+offset_right = 50.0
+offset_bottom = 70.0
+texture = ExtResource("3_vsuoa")
+stretch_mode = 3
+
+[node name="WeightLabel" type="Label" parent="ItemInfoVBox/FooterVBox/Control/WeightHBox"]
+offset_left = 62.0
+offset_right = 129.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 48
+text = "1.5"
+
+[node name="DurabilityHBox" type="HBoxContainer" parent="ItemInfoVBox/FooterVBox/Control"]
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -63.5
+offset_right = 63.5
+offset_bottom = 67.0
+theme_override_constants/separation = 12
+alignment = 1
+
+[node name="DurabilityTextureRect" type="TextureRect" parent="ItemInfoVBox/FooterVBox/Control/DurabilityHBox"]
+offset_left = 3.0
+offset_right = 45.0
+offset_bottom = 70.0
+texture = ExtResource("4_gbm8u")
+stretch_mode = 3
+
+[node name="DurabilityLabel" type="Label" parent="ItemInfoVBox/FooterVBox/Control/DurabilityHBox"]
+offset_left = 57.0
+offset_right = 124.0
+offset_bottom = 70.0
+theme_override_font_sizes/font_size = 48
+text = "1.5"
+
+[node name="CostHBox" type="HBoxContainer" parent="ItemInfoVBox/FooterVBox/Control"]
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -127.0
+offset_bottom = 67.0
+grow_horizontal = 0
+theme_override_constants/separation = 12
+alignment = 2
+metadata/_edit_layout_mode = 1
+
+[node name="CostLabel" type="Label" parent="ItemInfoVBox/FooterVBox/Control/CostHBox"]
+offset_left = 6.0
+offset_right = 73.0
+offset_bottom = 70.0
+size_flags_horizontal = 8
+theme_override_font_sizes/font_size = 48
+text = "1.5"
+horizontal_alignment = 2
+
+[node name="CostTextureRect" type="TextureRect" parent="ItemInfoVBox/FooterVBox/Control/CostHBox"]
+offset_left = 85.0
+offset_right = 127.0
+offset_bottom = 70.0
+texture = ExtResource("5_urldx")
+stretch_mode = 3
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wl2r8")
+}

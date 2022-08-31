@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dt1m2f4ikd0dy"]
+[gd_scene load_steps=5 format=3 uid="uid://doiqhs31shcys"]
 
-[ext_resource type="PackedScene" uid="uid://c5xaeq38oorc2" path="res://Inventory/InventoryItemSlot.tscn" id="1_4ny41"]
+[ext_resource type="PackedScene" uid="uid://cuq64d6j7da2k" path="res://Inventory/InventoryItemSlot.tscn" id="1_4ny41"]
+[ext_resource type="Script" path="res://Inventory/Scripts/UI/EquipSlotUI.gd" id="2_15s3c"]
 [ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/ActiveCellBackground.tres" id="2_ft6h0"]
 [ext_resource type="Texture2D" path="res://Inventory/Assets/UI/Inventory.sprites/PlaceholderHelm.tres" id="3_p2n40"]
 
@@ -8,6 +9,9 @@
 custom_minimum_size = Vector2(224, 224)
 offset_right = 224.0
 offset_bottom = 224.0
+script = ExtResource("2_15s3c")
+placeholder_texture = null
+slot_type = null
 
 [node name="ActiveNinePathRect" type="NinePatchRect" parent="." index="0"]
 visible = false
@@ -29,6 +33,7 @@ patch_margin_bottom = 60
 [node name="PlaceholderTextureRect" type="TextureRect" parent="." index="1"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 texture = ExtResource("3_p2n40")
 stretch_mode = 3
 
@@ -41,4 +46,5 @@ offset_left = -118.0
 offset_top = -118.0
 offset_right = 118.0
 offset_bottom = 118.0
+mouse_filter = 2
 ignore_texture_size = true

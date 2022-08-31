@@ -37,6 +37,7 @@ enum EItemType {
 	BOOTS,
 	AMULET,
 	CONSUMABLE,
+	NOTE,
 }
 
 enum EItemEffectType {
